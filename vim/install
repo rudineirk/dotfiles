@@ -18,5 +18,3 @@ if [ ! -e ~/.vim/autoload/plug.vim ]; then
     mkdir -p ~/.vim/autoload
     ln -s ~/.vim-plug/plug.vim ~/.vim/autoload/plug.vim
 fi
-
-vim +PlugInstall +PlugUpdate +qall
