@@ -1,0 +1,35 @@
+#
+# Executes commands at the start of an interactive session.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
+
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+
+function ssh_confd {
+    if [ ! -d ~/.ssh/config.d ]; then
+        mkdir -p ~/.ssh/config.d
+        [ -e ~/.ssh/config ] && /bin/mv -f ~/.ssh/config ~/.ssh/config.d/99-config
+    fi
+    if [ ! -e ~/.ssh/config.d/99-config ]; then
+        touch ~/.ssh/config.d/99-config
+    fi
+    /bin/mv -f ~/.ssh/config ~/.ssh/config.old
+    cat ~/.ssh/config.d/* > ~/.ssh/config
+    chmod 600 ~/.ssh/config
+    /usr/bin/ssh "$@"
+}
+
+alias scp=scp
+alias ssh=ssh_confd
+alias rpm_date="LC_TIME=en date +\"* %a %b %d %Y \$(git config user.name) <\$(git config user.email)> - 1.0-1\""
+
+# Customize to your needs...

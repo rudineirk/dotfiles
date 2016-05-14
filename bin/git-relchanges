@@ -1,0 +1,10 @@
+#!/bin/bash
+
+f() {
+    ref=$(git tag | sort | tail -1)
+    echo "Last release: ${ref}"
+    git --no-pager log --graph --oneline "${ref}.." -- src specs ipk
+    echo ""
+}
+
+f .

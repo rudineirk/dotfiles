@@ -1,0 +1,12 @@
+#!/bin/bash
+
+/bin/cd "$(dirname "$0")/../.."
+
+brew update && brew bundle
+
+while read category_dir; do
+    category_dir="${category_dir##*/}"
+    if [ -e "$category_dir/install" ] & [ "$category_dir" != "script" ]; then
+        "$category_dir/install"
+    fi
+done < <(find . -type d -not -path "*/\.*" -not -name ".")

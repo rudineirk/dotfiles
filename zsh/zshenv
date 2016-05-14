@@ -1,0 +1,36 @@
+#
+# Defines environment variables.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
+
+export PYENV_ROOT="$HOME/.pyenv"
+
+GOPATH=${GOPATH:-$HOME/.go}
+GO15VENDOREXPERIMENT=${GO15VENDOREXPERIMENT:-"1"}
+export GOPATH
+export GO15VENDOREXPERIMENT
+
+NPM_PROJECT_PATH=./node_modules/.bin
+NPM_GLOBAL_PATH=$HOME/.npm-packages
+export NPM_PROJECT_PATH
+export NPM_GLOBAL_PATH
+
+RUBYGEM_PATH="$(ruby -rubygems -e 'puts Gem.user_dir')"
+export RUBYGEM_PATH
+
+VAGRANT_DEFAULT_PROVIDER=${VAGRANT_DEFAULT_PROVIDER:-"virtualbox"}
+export VAGRANT_DEFAULT_PROVIDER
+
+EDITOR=${EDITOR:-"atom"}
+export EDITOR
+
+# Prevent git from using gnome-ssh-askpass
+unset SSH_ASKPASS
+unset GIT_ASKPASS
+
+# Ensure that a non-login, non-interactive shell has a defined environment.
+if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprofile"
+fi

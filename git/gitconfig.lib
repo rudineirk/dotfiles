@@ -1,0 +1,89 @@
+[apply]
+  whitespace = nowarn
+[branch]
+  autosetupmerge = true
+[push]
+  default = simple
+[core]
+  autocrlf = false
+  editor = vim
+  excludesfile = ~/.gitignore
+[advice]
+  statusHints = false
+[diff]
+  mnemonicprefix = true
+  algorithm = patience
+[filter "lfs"]
+  clean = git-lfs clean %f
+  smudge = git-lfs smudge %f
+  required = true
+[credential]
+  helper = cache --timeout=86400
+
+[color]
+  ui = true
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red
+  new = green
+
+[alias]
+  branch-list = !git b
+  branch-name = "!git rev-parse --abbrev-ref HEAD"
+  publish = "!git push -u origin $(git branch-name)"
+  unpublish = "!git push origin :$(git branch-name)"
+
+  a = add
+  b = branch -v
+
+  c = commit -m
+  ca = commit -am
+  ci = commit
+  amend = commit --amend
+  ammend = commit --amend
+
+  co = checkout
+  nb = checkout -b
+  cp = cherry-pick -x
+
+  d = diff
+  dc = diff --cached
+  last = diff HEAD^
+
+  s = status
+  st = status
+  stat = status
+  recent = !git for-each-ref --count=15 --sort=-committerdate refs/heads/ --format='%(refname:short) - %(contents:subject)'
+
+  l = log -50 --graph --date=iso
+  lg = log -150 --graph --oneline --decorate
+  lga = log -150 --graph --oneline --decorate --all
+  ls = log -150 --pretty=format:\" * %s\"
+  lc = log -50 --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\" --name-status
+  log-tree = !git lga
+
+  t = tag -n
+
+  pl = pull
+  ps = push
+  psa = !git push origin : && git push origin --tags
+  pb = !git publish
+  upb = !git unpublish
+
+  rc = rebase --continue
+  rs = rebase --skip
+  r = remote -v
+
+  unstage = reset HEAD
+  purge = reset --hard HEAD
+  uncommit = reset --soft HEAD^
+
+  ss = stash
+  sl = stash list
+  sa = stash apply
+  sd = stash drop

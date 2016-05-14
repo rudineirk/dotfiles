@@ -1,0 +1,27 @@
+#!/bin/bash
+
+set -e
+
+git_remotes=($(git remote))
+
+upstream=0
+for git_remote in "${git_remotes[@]}"; do
+    if [ "$git_remote" == "upstream" ]; then
+        upstream=1
+    fi
+done
+
+if [ $upstream -eq 1 ]; then
+    git checkout master
+    git pull --rebase --prune
+    git fetch upstream
+    git merge --ff-only upstream/master
+    git push -u origin master
+    git fetch --all --prune
+else
+    git checkout master
+    git pull --rebase --prune
+    git fetch --all --prune
+fi
+
+git submodule update --init --recursive

@@ -1,0 +1,22 @@
+#!/bin/bash
+
+dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+vimrc=~/.vimrc
+
+[[ -e "$vimrc" ]] && unlink "$vimrc"
+ln -s "$dir/vimrc" "$vimrc"
+
+if [ ! -e ~/.vim-plug ]; then
+    git clone https://github.com/junegunn/vim-plug.git ~/.vim-plug
+else
+    pushd ~/.vim-plug > /dev/null
+    git pull > /dev/null
+    popd > /dev/null
+fi
+
+if [ ! -e ~/.vim/autoload/plug.vim ]; then
+    mkdir -p ~/.vim/autoload
+    ln -s ~/.vim-plug/plug.vim ~/.vim/autoload/plug.vim
+fi
+
+vim +PlugInstall +PlugUpdate +qall

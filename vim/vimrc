@@ -1,0 +1,77 @@
+call plug#begin('~/.vim/plugged')
+
+Plug 'Shougo/vimproc.vim'
+
+Plug 'scrooloose/nerdtree'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'editorconfig/editorconfig-vim'
+
+Plug 'Shougo/neocomplete.vim'
+Plug 'scrooloose/syntastic'
+
+Plug 'Chiel92/vim-autoformat'
+Plug 'Townk/vim-autoclose'
+
+Plug 'mattn/emmet-vim'
+Plug 'alvan/vim-closetag'
+
+Plug 'klen/python-mode'
+Plug 'davidhalter/jedi-vim'
+Plug 'Glench/Vim-Jinja2-Syntax'
+
+Plug 'fatih/vim-go'
+
+call plug#end()
+
+syntax on
+filetype on
+filetype plugin indent on
+set clipboard=unnamedplus
+
+let g:rehash256 = 1
+set t_Co=256
+
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-h> <c-w>h
+map <C-n> :NERDTreeToggle<CR>
+
+set wildignore+=*/tmp/*,*/node_modules/*,*.so,*.swp,*.zip,*.gz,*.xz,*.tar
+
+"au BufWrite * :Autoformat
+"let g:autoformat_autoindent = 0
+
+let g:acp_enableAtStartup = 0
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:closetag_filenames = "*.html,*.template,*.jinja2"
+
+let g:syntastic_json_checkers = ['jsonlint']
+let g:syntastic_yaml_checkers = ['jsyaml']
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_html_checkers = ['eslint', 'tidy']
+let g:syntastic_css_checkers = ['csslint']
+
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
+
+let g:pymode_folding = 0
+
+let g:syntastic_python_checkers = ['python', 'pylint']
+
+let g:syntastic_go_checkers = ['go', 'gofmt', 'golint']
+
+let g:syntastic_sh_checkers = ['shellcheck']
+
