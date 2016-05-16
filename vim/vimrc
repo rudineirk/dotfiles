@@ -21,6 +21,8 @@ Plug 'Glench/Vim-Jinja2-Syntax'
 
 Plug 'fatih/vim-go'
 
+Plug 'sjl/badwolf'
+
 call plug#end()
 
 syntax on
@@ -30,6 +32,7 @@ set clipboard=unnamedplus
 
 let g:rehash256 = 1
 set t_Co=256
+colorscheme badwolf
 
 map <C-e> :split<CR>
 map <C-d> :vsplit<CR>
