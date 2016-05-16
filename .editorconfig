@@ -1,0 +1,38 @@
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_size = 4
+indent_style = space
+
+# configs
+[*.{conf,ini}]
+indent_size = 2
+
+# Asterisk
+[*.ael,extensions.conf]
+indent_size = 2
+
+# templates
+[*.{jinja2,j2,tmpl,template}]
+indent_size = 2
+
+# webdev
+[*.{js,ts,coffee,html,css,scss,sass,less}]
+indent_size = 2
+
+[.{jshintrc,jscsrc}]
+indent_size = 2
+
+# markdown
+[.remarkrc,*.md,*.markdown]
+indent_size = 2
+
+# database
+[*.sql]
+indent_size = 2
+
+# Data formats
+[*.{json,cson,yaml,yml,xml}]
+indent_size = 2
