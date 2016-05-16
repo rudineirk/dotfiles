@@ -6,7 +6,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
 
-Plug 'Shougo/neocomplete.vim'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer --gocode-completer --clang-completer' }
 Plug 'scrooloose/syntastic'
 
 Plug 'Chiel92/vim-autoformat'
