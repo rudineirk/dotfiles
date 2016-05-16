@@ -1,0 +1,13 @@
+#!/bin/bash
+
+dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+atom_config_path=~/.atom/config.cson
+
+mkdir -p ~/.atom
+[ -e "$atom_config_path" ] && unlink "$atom_config_path"
+ln -s "$dir/config.cson" "$atom_config_path"
+
+which apm > /dev/null 2>&1
+if [ $? -eq 0 ]; then
+    apm install --packages-file $dir/packages.txt
+fi
