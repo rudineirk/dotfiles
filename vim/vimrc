@@ -31,10 +31,8 @@ set clipboard=unnamedplus
 let g:rehash256 = 1
 set t_Co=256
 
-map <c-j> <c-w>j
-map <c-k> <c-w>k
-map <c-l> <c-w>l
-map <c-h> <c-w>h
+map <C-e> :split<CR>
+map <C-d> :vsplit<CR>
 map <C-n> :NERDTreeToggle<CR>
 
 set wildignore+=*/tmp/*,*/node_modules/*,*.so,*.swp,*.zip,*.gz,*.xz,*.tar
