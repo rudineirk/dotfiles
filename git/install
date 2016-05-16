@@ -2,6 +2,10 @@
 
 dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 gitconfig_lib_path=~/.gitconfig.lib
+gitignore_path=~/.gitignore
+
+[ -e "$gitignore_path" ] && unlink "$gitignore_path"
+ln -s "$dir/gitignore" "$gitignore_path"
 
 [ -e "$gitconfig_lib_path" ] && unlink "$gitconfig_lib_path"
 ln -s "$dir/gitconfig.lib" "$gitconfig_lib_path"
