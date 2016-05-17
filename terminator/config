@@ -3,8 +3,8 @@
   go_down = <Alt>s
   go_right = <Alt>d
   go_left = <Alt>a
-  split_horiz = <Shift><Alt>d
-  split_vert = <Shift><Alt>e
+  split_horiz = <Primary>q
+  split_vert = <Primary>e
   switch_to_tab_1 = <Alt>1
   switch_to_tab_2 = <Alt>2
   switch_to_tab_3 = <Alt>3

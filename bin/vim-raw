@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+#
+# Runs vim without any plugins.
+#
+
+vim -u NONE -N "$@"
