@@ -47,12 +47,12 @@ path=(
   ./node_modules/.bin
   $NPM_GLOBAL_PATH/bin
   ${RUBYGEM_PATH}/bin
-  $HOME/.linuxbrew/sbin
-  $HOME/.linuxbrew/bin
   $HOME/bin
   $HOME/.local/bin
   /usr/local/{bin,sbin}
   $path
+  $HOME/.linuxbrew/sbin
+  $HOME/.linuxbrew/bin
 )
 
 #
