@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+dir="$( builtin cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 vimrc=~/.vimrc
 
 [[ -e "$vimrc" ]] && unlink "$vimrc"

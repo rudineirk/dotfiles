@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+dir="$( builtin cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 terminator_config=~/.config/terminator/config
 
 [ -e "$terminator_config" ] && unlink "$terminator_config"

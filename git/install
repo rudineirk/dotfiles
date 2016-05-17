@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+dir="$( builtin cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 gitconfig_lib_path=~/.gitconfig.lib
 gitignore_path=~/.gitignore
 
