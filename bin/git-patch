@@ -1,4 +1,18 @@
-#!/bin/bash
+#!/usr/bin/env bash
+#
+# Creates a patch from a commit ref.
+# If no argument is used, create a patch from the last commit.
+# The ref may be a commit range.
+#
+# $1 - Git reference to create a patch.
+#
+#
+# Examples
+#
+#   git patch
+#   git patch HEAD~1
+#   git patch v1.0.0..master
+#
 
 if [ "$@" == "" ]; then
     git show

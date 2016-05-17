@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+#
+# Erases all changes not committed. Force cleanup of local git workspace.
+# WARNING!!! This is permanent, no way to recover lost changes.
+#
+#
+# Examples
+#
+#   git purge
+#
+
+git reset --hard HEAD

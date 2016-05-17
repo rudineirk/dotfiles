@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#
+# Show the commit log with the changed files.
+#
+#
+# Examples
+#
+#   git log-changes
+#
+
+git log -150 --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\" --name-status

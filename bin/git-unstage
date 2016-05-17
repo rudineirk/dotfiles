@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#
+# Remove from staging the changes added but not committed. Non-destructive.
+#
+#
+# Examples
+#
+#   git unstage
+#
+
+git reset HEAD
