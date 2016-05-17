@@ -1,0 +1,12 @@
+#!/bin/bash
+
+dir="$( builtin cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+powerline_dir=~/.config/powerline
+
+if [[ ! -L "$powerline_dir" ]]; then
+    rm -rf "$powerline_dir"
+else
+    unlink "$powerline_dir"
+fi
+
+ln -s "$dir" "$powerline_dir"

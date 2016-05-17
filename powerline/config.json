@@ -1,0 +1,11 @@
+{
+  "common": {
+    "log_file": "~/.powerline.log",
+    "log_level": "DEBUG"
+  },
+  "ext": {
+    "tmux": {
+      "theme": "default"
+    }
+  }
+}
