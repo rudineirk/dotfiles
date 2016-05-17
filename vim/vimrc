@@ -10,7 +10,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer --gocode-c
 Plug 'scrooloose/syntastic'
 
 Plug 'Chiel92/vim-autoformat'
-Plug 'Townk/vim-autoclose'
+Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 
 Plug 'mattn/emmet-vim'
