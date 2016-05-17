@@ -12,7 +12,7 @@ ln -s "$dir/gitconfig.lib" "$gitconfig_lib_path"
 
 if [ -e ~/.gitconfig ]; then
     grep -q "$gitconfig_lib_path" ~/.gitconfig ||
-        echo -e "\n[include]\n  path = $gitconfig_lib_path" \
+        echo -e "\n[include]\n    path = $gitconfig_lib_path" \
         >> ~/.gitconfig
 else
     echo -e "\n[include]\n  path = $gitconfig_lib_path" > ~/.gitconfig
