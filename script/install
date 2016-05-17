@@ -9,4 +9,4 @@ while read category_dir; do
     if [ -e "$category_dir/install" ] & [ "$category_dir" != "script" ]; then
         "./$category_dir/install"
     fi
-done < <(find . -type d -not -path "*/\.*" -not -name ".")
+done < <(find . -maxdepth 1 -type d -not -path "*/\.*" -not -name ".")
