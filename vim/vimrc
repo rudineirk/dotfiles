@@ -44,7 +44,7 @@ map <C-n> :NERDTreeToggle<CR>
 
 set wildignore+=*/tmp/*,*/node_modules/*,*.so,*.swp,*.zip,*.gz,*.xz,*.tar
 
-au BufWrite * :Autoformat
+au BufWrite *.{json,yaml,yml,py,js,ts,sh} :Autoformat
 noremap <F3> :Autoformat<CR>
 
 let g:acp_enableAtStartup = 0
