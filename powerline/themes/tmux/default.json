@@ -11,35 +11,35 @@
     "right": [
       {
         "name": "uptime",
-	"function": "powerline.segments.common.sys.uptime",
+        "function": "powerline.segments.common.sys.uptime",
         "priority": 50
       },
       {
         "name": "network_load",
-	"function": "powerline.segments.common.net.network_load",
+        "function": "powerline.segments.common.net.network_load",
         "priority": 50
       },
       {
         "name": "system_load",
-	"function": "powerline.segments.common.sys.system_load",
+        "function": "powerline.segments.common.sys.system_load",
         "priority": 50
       },
       {
         "name": "battery",
-	"function": "powerline.segments.common.bat.battery",
-	"priority": 50,
-	"args": {
-	  "online": "♥",
-	  "offline": "♡"
-	}
+        "function": "powerline.segments.common.bat.battery",
+        "priority": 50,
+        "args": {
+          "online": "♥",
+          "offline": "♡"
+        }
       },
       {
         "name": "date",
-	"function": "powerline.segments.common.time.date"
+        "function": "powerline.segments.common.time.date"
       },
       {
         "name": "date",
-	"function": "powerline.segments.common.time.date",
+        "function": "powerline.segments.common.time.date",
         "args": {
           "format": "%H:%M",
           "istime": true
@@ -47,7 +47,7 @@
       },
       {
         "name": "hostname",
-	"function": "powerline.segments.common.net.hostname"
+        "function": "powerline.segments.common.net.hostname"
       }
     ]
   }
