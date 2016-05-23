@@ -4,9 +4,21 @@ builtin cd "$(dirname "${BASH_SOURCE[0]}")/.."
 
 brew update && brew bundle
 
-while read category_dir; do
+CATEGORIES=(
+    bin
+    editorconfig
+    git
+    python
+    powerline
+    tmux
+    zsh
+    vim
+    atom
+)
+
+for category_dir in ${CATEGORIES[@]}; do
     category_dir="${category_dir##*/}"
     if [ -e "$category_dir/install" ] & [ "$category_dir" != "script" ]; then
         "./$category_dir/install"
     fi
-done < <(find . -maxdepth 1 -type d -not -path "*/\.*" -not -name ".")
+done
