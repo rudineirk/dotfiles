@@ -1,0 +1,7 @@
+#!/bin/bash
+
+dir="$( builtin cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+taskrc_path=~/.taskrc
+
+[ -e "$taskrc_path" ] && unlink "$taskrc_path"
+ln -s "$dir/taskrc" "$taskrc_path"

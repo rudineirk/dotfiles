@@ -14,6 +14,7 @@ CATEGORIES=(
     zsh
     vim
     atom
+    taskwarrior
 )
 
 for category_dir in ${CATEGORIES[@]}; do
