@@ -1,7 +1,0 @@
-#!/bin/bash
-
-dir="$( builtin cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-terminator_config=~/.config/terminator/config
-
-[ -e "$terminator_config" ] && unlink "$terminator_config"
-ln -s "$dir/config" "$terminator_config"
