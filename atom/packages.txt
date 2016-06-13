@@ -19,7 +19,6 @@ language-rpm-spec
 
 linter
 linter-pylint
-linter-golinter
 linter-shellcheck
 linter-docker
 linter-eslint
@@ -36,5 +35,3 @@ emmet
 atom-jinja2
 autocomplete-python
 python-tools
-go-plus
-go-oracle

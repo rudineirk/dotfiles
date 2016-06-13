@@ -18,8 +18,6 @@
     ]
   editor:
     fontFamily: "Source Code Pro for Powerline"
-  "go-plus":
-    goPath: "~/go"
   linter:
     lintOnFly: false
   "linter-shellcheck":
