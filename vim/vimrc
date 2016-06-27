@@ -4,14 +4,17 @@ Plug 'Shougo/vimproc.vim'
 
 Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'majutsushi/tagbar'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer --gocode-completer --clang-completer' }
 Plug 'scrooloose/syntastic'
 
 Plug 'Chiel92/vim-autoformat'
 Plug 'jiangmiao/auto-pairs'
-Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-commentary'
 
 Plug 'mattn/emmet-vim'
 Plug 'alvan/vim-closetag'
@@ -34,13 +37,21 @@ filetype on
 filetype plugin indent on
 set clipboard=unnamedplus
 
-let g:rehash256 = 1
-set t_Co=256
+if has('nvim')
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+else
+  let g:rehash256 = 1
+  set t_Co=256
+endif
+
 colorscheme badwolf
 
-map <C-e> :split<CR>
-map <C-d> :vsplit<CR>
-map <C-n> :NERDTreeToggle<CR>
+map <C-h> :split<CR>
+map <C-v> :vsplit<CR>
+map <C-t> :NERDTreeToggle<CR>
+map <C-_> :Commentary<CR>
+nmap <F8> :TagbarToggle<CR>
 
 set wildignore+=*/tmp/*,*/node_modules/*,*.so,*.swp,*.zip,*.gz,*.xz,*.tar
 
@@ -73,6 +84,8 @@ let g:syntastic_go_checkers = ['go', 'gofmt', 'golint']
 let g:syntastic_sh_checkers = ['shellcheck']
 
 let g:syntastic_python_pylint_args = '--rcfile=.pylintrc'
+
+let g:formatters_python = ['autopep8']
 
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
