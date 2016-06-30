@@ -22,15 +22,15 @@ for git_remote in "${git_remotes[@]}"; do
 done
 
 if [ $upstream -eq 1 ]; then
-    git checkout master
     git fetch --all --prune
-    git pull --prune
+    git pull --prune --rebase
     git fetch upstream
-    git merge --ff-only upstream/master
+    if [ "$(git rev-parse --abbrev-ref HEAD)" == "master" ]; then
+        git merge --ff-only upstream/master
+    fi
 else
-    git checkout master
     git fetch --all --prune
-    git pull --prune
+    git pull --prune --rebase
 fi
 
 git submodule update --init --recursive
