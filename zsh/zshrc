@@ -25,7 +25,7 @@ function ssh_confd {
     /bin/mv -f ~/.ssh/config ~/.ssh/config.old
     cat ~/.ssh/config.d/* > ~/.ssh/config
     chmod 600 ~/.ssh/config
-    /usr/bin/ssh "$@"
+    TERM=screen /usr/bin/ssh "$@"
 }
 
 alias scp=scp
