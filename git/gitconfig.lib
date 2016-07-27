@@ -1,72 +1,82 @@
 [apply]
-	whitespace = nowarn
+whitespace = nowarn
+
 [branch]
-	autosetupmerge = true
+autosetupmerge = true
+
 [push]
-	default = simple
+default = simple
+
 [core]
-	autocrlf = false
-	editor = vim
-	excludesfile = ~/.gitignore
+autocrlf = false
+editor = vim
+excludesfile = ~/.gitignore
+
 [advice]
-	statusHints = false
+statusHints = false
+
 [diff]
-	mnemonicprefix = true
-	algorithm = patience
+mnemonicprefix = true
+algorithm = patience
+
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
-	required = true
+clean = git-lfs clean %f
+smudge = git-lfs smudge %f
+required = true
+
 [credential]
-	helper = cache --timeout=86400
+helper = cache --timeout=86400
 
 [color]
-	ui = true
+ui = true
+
 [color "branch"]
-	current = yellow reverse
-	local = yellow
-	remote = green
+current = yellow reverse
+local = yellow
+remote = green
+
 [color "diff"]
-	meta = yellow bold
-	frag = magenta bold
-	old = red
-	new = green
+meta = yellow bold
+frag = magenta bold
+old = red
+new = green
 
 [alias]
-	a = add
-	c = commit
-	cm = commit -m
-	amend = commit --amend
-	ammend = commit --amend
+a = add
+c = commit
+cm = commit -m
+amend = commit --amend
+ammend = commit --amend
+squash = merge --squash
 
-	co = checkout
-	nb = checkout -b
-	cp = cherry-pick -x
+co = checkout
+nb = checkout -b
+cp = cherry-pick -x
 
-	d = diff
-	dc = diff --cached
+d = diff
+dc = diff --cached
 
-	s = status
-	st = status
-	stat = status
+s = status
+st = status
+stat = status
 
-	t = tag -n
+t = tag -n
 
-	rc = rebase --continue
-	rs = rebase --skip
-	r = remote -v
+rc = rebase --continue
+rs = rebase --skip
+r = remote -v
 
-	ss = stash
-	sl = stash list
-	sa = stash apply
-	sd = stash drop
+ss = stash
+sl = stash list
+sa = stash apply
+sd = stash drop
 
-	branches = !legit branches
-	graft = !legit graft
-	harvest = !legit harvest
-	publish = !legit publish
-	unpublish = !legit unpublish
-	sprout = !legit sprout
-	sync = !legit sync
-	switch = !legit switch
-	resync = !legit resync
+branches = !legit branches
+graft = !legit graft
+harvest = !legit harvest
+publish = !legit publish
+unpublish = !legit unpublish
+sprout = !legit sprout
+sync = !legit sync
+switch = !legit switch
+resync = !legit resync
