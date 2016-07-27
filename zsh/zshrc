@@ -25,7 +25,11 @@ function ssh_confd {
     /bin/mv -f ~/.ssh/config ~/.ssh/config.old
     cat ~/.ssh/config.d/* > ~/.ssh/config
     chmod 600 ~/.ssh/config
-    TERM=screen /usr/bin/ssh "$@"
+    if [[ "$TERM" == "screen-256color" ]]; then
+        TERM=screen /usr/bin/ssh "$@"
+    else
+        /usr/bin/ssh "$@"
+    fi
 }
 
 alias scp=scp
