@@ -66,6 +66,9 @@ rc = rebase --continue
 rs = rebase --skip
 r = remote -v
 
+fmr = fetch-merge-request
+fpr = fetch-pull-request
+
 ss = stash
 sl = stash list
 sa = stash apply
