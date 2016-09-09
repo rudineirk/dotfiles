@@ -9,8 +9,6 @@ nucleus-dark-ui
 an-old-hope-syntax
 
 git-plus
-git-blame
-merge-conflicts
 
 language-latex
 language-ini
@@ -26,7 +24,6 @@ linter-csslint
 linter-js-yaml
 linter-jsonlint
 linter-markdown
-linter-tidy
 
 editorconfig
 atom-beautify
