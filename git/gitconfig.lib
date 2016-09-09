@@ -63,6 +63,7 @@ del-branch = branch -d
 d = diff
 dc = diff --cached
 lt = log-tree
+ll = log-linear
 
 s = status
 st = status
