@@ -5,8 +5,6 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
-export PYENV_ROOT="$HOME/.pyenv"
-
 GOPATH=${GOPATH:-$HOME/.go}
 GO15VENDOREXPERIMENT=${GO15VENDOREXPERIMENT:-"1"}
 export GOPATH
@@ -19,9 +17,6 @@ export NPM_GLOBAL_PATH
 
 RUBYGEM_PATH="$(ruby -rubygems -e 'puts Gem.user_dir')"
 export RUBYGEM_PATH
-
-VAGRANT_DEFAULT_PROVIDER=${VAGRANT_DEFAULT_PROVIDER:-"virtualbox"}
-export VAGRANT_DEFAULT_PROVIDER
 
 EDITOR=${EDITOR:-"atom"}
 export EDITOR
