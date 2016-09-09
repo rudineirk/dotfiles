@@ -12,6 +12,18 @@
 
 set -e
 
+function pull_changes {
+    git fetch --all --prune
+    git pull --prune --rebase
+    if [ $upstream -eq 1 ]; then
+        git fetch upstream
+        if [ "$(git rev-parse --abbrev-ref HEAD)" == "master" ]; then
+            git merge --ff-only upstream/master
+        fi
+    fi
+    git submodule update --init --recursive
+}
+
 git_remotes=($(git remote))
 
 upstream=0
@@ -21,16 +33,14 @@ for git_remote in "${git_remotes[@]}"; do
     fi
 done
 
-if [ $upstream -eq 1 ]; then
-    git fetch --all --prune
-    git pull --prune --rebase
-    git fetch upstream
-    if [ "$(git rev-parse --abbrev-ref HEAD)" == "master" ]; then
-        git merge --ff-only upstream/master
-    fi
-else
-    git fetch --all --prune
-    git pull --prune --rebase
-fi
+set +e
+git diff-index --quiet HEAD --
+changes=$?
+set -e
+[ $changes -ne 0 ] && git stash -q
 
-git submodule update --init --recursive
+pull_changes
+if [ $changes -ne 0 ]; then
+    git stash apply -q
+    git stash drop -q
+fi
