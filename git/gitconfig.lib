@@ -49,12 +49,17 @@ amend = commit --amend
 ammend = commit --amend
 squash = merge --squash
 
+unstage = reset HEAD
+purge = reset --hard HEAD
+uncommit = reset --soft HEAD^
+
 co = checkout
 nb = checkout -b
 cp = cherry-pick -x
 
 d = diff
 dc = diff --cached
+lt = log-tree
 
 s = status
 st = status
@@ -62,6 +67,8 @@ stat = status
 
 t = tag -n
 
+pl = pull
+ps = push
 rc = rebase --continue
 rs = rebase --skip
 r = remote -v

@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+#
+# A very slightly quicker way to credit an author on the latest commit.
+#
+# $1 - The full name of the author or username
+# $2 - The email address of the author.
+#
+#
+# Examples
+#
+#   git credit "Zach Holman" zach@example.com
+#   git credit @rudineigr
+#
+
+function usage {
+    cat <<EOF
+git credit <name> <email>
+git credit @<username>
+EOF
+}
+
+name="$1"
+email="$2"
+
+if [ -f ~/.git-credit-data ]; then
+    source ~/.git-credit-data
+else
+    USERNAMES=()
+    NAMES=()
+    EMAILS=()
+fi
+
+if [[ "${name:0:1}" == "@" ]]; then
+    user_id=
+    i=0
+    for x in "${USERNAMES[@]}"; do
+        if [[ "${name:1:1000}" == "${USERNAMES[$i]}" ]]; then
+            user_id=$i
+            break
+        fi
+        i=$((i+1))
+    done
+fi
+
+if [[ "$user_id" != "" ]]; then
+    name="${NAMES[$user_id]}"
+    email="${EMAILS[$user_id]}"
+fi
+
+if [ "$email" == "" -o "$name" == "" ]; then
+    usage
+    exit 1
+fi
+
+git commit -C HEAD --amend --author "$name <$email>"

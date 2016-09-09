@@ -17,3 +17,10 @@ if [ -e ~/.gitconfig ]; then
 else
     echo -e "\n[include]\n  path = $gitconfig_lib_path" > ~/.gitconfig
 fi
+
+for script in "$dir"/git-*; do
+    [[ "${script##*/}" == "install"  ]] && continue
+    mkdir -p ~/bin
+    [[ -e ~/bin/"${script##*/}"  ]] && unlink ~/bin/"${script##*/}"
+    ln -s "$script" ~/bin/
+done
