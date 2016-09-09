@@ -78,6 +78,7 @@ let g:syntastic_css_checkers = ['csslint']
 let g:syntastic_python_checkers = ['python', 'pylint']
 let g:syntastic_go_checkers = ['go', 'gofmt', 'golint']
 let g:syntastic_sh_checkers = ['shellcheck']
+let g:syntastic_rst_checkers = ['sphinx', 'rstcheck']
 
 let g:syntastic_python_pylint_args = '--rcfile=.pylintrc'
 
