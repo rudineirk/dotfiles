@@ -1,5 +1,7 @@
 "*":
   "atom-beautify":
+    general:
+      _analyticsUserId: "b66dfb8c-55ed-49b5-8588-f856175fbf15"
     python:
       beautify_on_save: true
       sort_imports: true
@@ -11,6 +13,8 @@
       "background-tips"
       "exception-reporting"
       "metrics"
+      "linter-csslint"
+      "atom-beautify"
     ]
     themes: [
       "nucleus-dark-ui"
@@ -20,6 +24,10 @@
     fontFamily: "Source Code Pro for Powerline"
   linter:
     lintOnFly: false
+  "linter-eslint":
+    disableWhenNoEslintConfig: false
+  "linter-markdown":
+    detectIgnore: false
   "linter-shellcheck":
     enableNotice: true
   welcome:
