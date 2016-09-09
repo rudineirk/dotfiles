@@ -54,8 +54,11 @@ purge = reset --hard HEAD
 uncommit = reset --soft HEAD^
 
 co = checkout
-nb = checkout -b
+nb = !legit sprout
+new-branch = !legit sprout
 cp = cherry-pick -x
+db = !git del-branch
+del-branch = branch -d
 
 d = diff
 dc = diff --cached
