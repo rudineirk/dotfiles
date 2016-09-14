@@ -55,6 +55,7 @@ uncommit = reset --soft HEAD^
 
 co = checkout
 cp = cherry-pick -x
+b = !legit sprout
 bn = !legit sprout
 bd = branch -d
 br = branch -m
