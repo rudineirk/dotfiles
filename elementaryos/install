@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Google.dark theme
+dconf write /org/pantheon/terminal/settings/palette "'#1d1f21:#cc342b:#198844:#fba922:#3971ed:#a36ac7:#3971ed:#c5c8c6:#969896:#cc342b:#198844:#fba922:#3971ed:#a36ac7:#3971ed:#ffffff'"
+dconf write /org/pantheon/terminal/settings/foreground "'#c5c8c6'"
+dconf write /org/pantheon/terminal/settings/background "'#1d1f21'"
+dconf write /org/pantheon/terminal/settings/cursor-color "'#c5c8c6'"
+
+# Source Code Pro Monospace
+dconf write /org/gnome/desktop/interface/monospace-font-name "'Source Code Pro for Powerline 10'"
