@@ -1,0 +1,31 @@
+#!/bin/bash
+
+URL_PREFIX='https://github.com/powerline/fonts/raw/master/SourceCodePro'
+WEB_FONTS=(
+    'Sauce%20Code%20Powerline%20Black.otf'
+    'Sauce%20Code%20Powerline%20Bold.otf'
+    'Sauce%20Code%20Powerline%20ExtraLight.otf'
+    'Sauce%20Code%20Powerline%20Light.otf'
+    'Sauce%20Code%20Powerline%20Medium.otf'
+    'Sauce%20Code%20Powerline%20Regular.otf'
+    'Sauce%20Code%20Powerline%20Semibold.otf'
+)
+FONTS=(
+    'Sauce Code Powerline Black.otf'
+    'Sauce Code Powerline Bold.otf'
+    'Sauce Code Powerline ExtraLight.otf'
+    'Sauce Code Powerline Light.otf'
+    'Sauce Code Powerline Medium.otf'
+    'Sauce Code Powerline Regular.otf'
+    'Sauce Code Powerline Semibold.otf'
+)
+
+mkdir -p ~/.fonts
+i=0
+for WEB_FONT in "${WEB_FONTS[@]}"; do
+    FONT="${FONTS[$i]}"
+    if [[ ! -f "${HOME}/.fonts/${FONT}" ]]; then
+        wget -O "${HOME}/.fonts/${FONT}" "${URL_PREFIX}/${WEB_FONT}"
+    fi
+    i=$((i+1))
+done
