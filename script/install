@@ -11,6 +11,8 @@ fi
 CATEGORIES=(
     bin
     editorconfig
+    elementaryos
+    fonts
     git
     python
     powerline
