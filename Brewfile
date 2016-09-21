@@ -1,5 +1,6 @@
 tap 'homebrew/bundle'
 
+brew 'python'
 brew 'coreutils'
 brew 'libgit2'
 brew 'openssl'
