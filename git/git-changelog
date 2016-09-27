@@ -1,0 +1,182 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+from __future__ import unicode_literals, print_function
+
+from subprocess import Popen, PIPE
+from os import path, environ
+from datetime import datetime
+
+from pygit2 import Repository, GIT_SORT_TOPOLOGICAL
+
+
+COMMIT_TYPES = {
+    'feat': 'Funcionalidades',
+    'fix': 'Bugs corrigidos',
+    'docs': 'Documentação',
+    'style': 'Ajustes de estilo de código',
+    'refactor': 'Refatoração de código',
+    'perf': 'Melhorias de performance',
+    'test': 'Testes',
+    'chore': 'Diversos',
+}
+TYPE_ORDER = [
+    'feat',
+    'fix',
+    'docs',
+    'style',
+    'refactor',
+    'perf',
+    'test',
+    'chore',
+]
+MINOR_CHANGE_TYPES = [
+    'feat',
+    'refactor',
+    'perf',
+]
+
+
+CHANGELOG_ISSUE_URL_CONFIG = path.join(
+    environ.get('HOME'),
+    '.changelog_issue_url',
+)
+
+try:
+    with open(CHANGELOG_ISSUE_URL_CONFIG) as config:
+        ISSUE_URL_PREFIX = config.read().strip()
+except IOError:
+    ISSUE_URL_PREFIX = ''
+
+proc = Popen(['git', 'rev-parse', '--show-toplevel'], stdout=PIPE, stderr=PIPE)
+proc.wait()
+git_dir = proc.stdout.read().strip()
+
+if not path.isdir(git_dir) or proc.returncode != 0:
+    print('Not a git repository')
+    exit(1)
+
+
+repo = Repository(path.join(git_dir, '.git'))
+last_tag = sorted([
+    x for x in repo.listall_references()
+    if x.startswith('refs/tags')
+])[-1]
+
+tag_ref = repo.lookup_reference(last_tag)
+tag_commit_id = tag_ref.peel().id
+
+master = repo.lookup_reference('refs/heads/master')
+master_commit_id = master.peel().id
+
+messages = []
+for commit in repo.walk(master_commit_id, GIT_SORT_TOPOLOGICAL):
+    if commit.id == tag_commit_id:
+        break
+
+    messages.append(commit.message.strip())
+
+try:
+    version = [int(x) for x in last_tag.split('/')[-1].strip('v').split('.')]
+except ValueError:
+    version = [0, 0, 0]
+
+
+commits = []
+for commit_message in messages:
+    commit_message = commit_message.split('\n')
+    title = commit_message[0]
+    body = '\n'.join(commit_message[1:]).strip() \
+        if len(commit_message) > 1 else ''
+
+    title = title.split(':')
+    message = title[-1].strip()
+    type_tag = title[0].split('(')[0].lower()
+    section_tag = title[0].split('(')[-1].split(')')[0].strip()
+
+    issues = []
+    for line in body.split('\n'):
+        line = line.split('#')
+        if len(line) == 1:
+            continue
+
+        for issue in line[1:]:
+            try:
+                issue = int(issue.split(' ')[0])
+            except ValueError:
+                continue
+
+            issues.append(issue)
+
+    commits.append({
+        'type': type_tag if type_tag in COMMIT_TYPES else 'chore',
+        'section': section_tag if section_tag != message else '',
+        'message': message,
+        'issues': issues,
+    })
+
+
+changelog_message = []
+minor_version_change = False
+first = True
+for commit_type in TYPE_ORDER:
+    type_commits = [x for x in commits if x['type'] == commit_type]
+    if not type_commits:
+        continue
+
+    if commit_type in MINOR_CHANGE_TYPES:
+        minor_version_change = True
+
+    if first:
+        first = False
+    else:
+        changelog_message.append('')
+
+    type_changelog = []
+    for commit in type_commits:
+        if commit['section']:
+            changelog_item = '* **{0}**: {1}'.format(
+                commit['section'],
+                commit['message'],
+            )
+        else:
+            changelog_item = '* {0}'.format(commit['message'])
+
+        type_changelog.append(changelog_item)
+        if not ISSUE_URL_PREFIX or not commit['issues']:
+            continue
+
+        issue_msg = '  ('
+        issue_link = '[#{0}](' + ISSUE_URL_PREFIX + ')'
+        for issue in commit['issues']:
+            issue_msg += '\n   ' + issue_link.format(
+                issue,
+            )
+        issue_msg += '\n  )'
+        type_changelog.append(issue_msg)
+
+    type_changelog.insert(0, '#### {0}\n'.format(
+        COMMIT_TYPES.get(commit_type),
+    ))
+    changelog_message += type_changelog
+
+if minor_version_change:
+    version[1] = version[1] + 1
+    version[2] = 0
+else:
+    version[2] = version[2] + 1
+
+now = datetime.now()
+changelog_message.insert(
+    0,
+    '### v{major}.{minor}.{fix} @ {year}-{month}-{day}\n'.format(
+        major=version[0],
+        minor=version[1],
+        fix=version[2],
+        year=now.year,
+        month=str(now.month).zfill(2),
+        day=str(now.day).zfill(2),
+    ),
+)
+
+print('\n'.join(changelog_message).encode('utf-8'))
