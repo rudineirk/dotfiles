@@ -1,0 +1,27 @@
+#!/bin/bash
+
+export WINEDEBUG=-all
+export WINEPREFIX=$HOME/.wine_prefix/final_fantasy_xiv
+export WINEARCH=win32
+CMD="$WINEPREFIX/drive_c/Program Files/SquareEnix/FINAL FANTASY XIV - A Realm Reborn/boot/ffxivboot.exe"
+
+
+if [ "$1" == "" ]; then
+    primusrun wine "$CMD"
+    exit $?
+fi
+
+case "$1" in
+    no-nvidia)
+        wine $CMD
+        ;;
+    winecfg)
+        winecfg
+        ;;
+    debug)
+        WINEDEBUG='' wine "$CMD"
+        ;;
+    *)
+        wine "$@"
+        ;;
+esac
