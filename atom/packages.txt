@@ -10,6 +10,7 @@ language-rpm-spec
 atom-beautify
 editorconfig
 linter
+hyperclick
 git-plus
 merge-conflicts
 highlight-selected
