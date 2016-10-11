@@ -16,10 +16,6 @@
       "linter-csslint"
       "atom-beautify"
     ]
-    themes: [
-      "nucleus-dark-ui"
-      "an-old-hope-syntax"
-    ]
   editor:
     fontFamily: "Source Code Pro for Powerline"
   linter:
@@ -30,5 +26,7 @@
     detectIgnore: false
   "linter-shellcheck":
     enableNotice: true
+  "one-dark-ui":
+    layoutMode: "Compact"
   welcome:
     showOnStartup: false
