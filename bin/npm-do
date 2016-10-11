@@ -1,0 +1,39 @@
+#!/bin/bash
+
+NPM_BIN=$(/bin/which npm)
+
+pushd ../ > /dev/null
+PATH=$($NPM_BIN bin):$PATH
+popd > /dev/null
+
+PATH=$($NPM_BIN bin):$PATH
+ACTION="$1"
+shift
+if [ "$ACTION" == "install" ]; then
+    PACKAGE="${@: -1}"
+
+    cur_dir="$(pwd)"
+    npm_dir="${cur_dir%%/src/js/*}"
+
+    if [ "${cur_dir}" != "${npm_dir}" ]; then
+        npm_dir="${npm_dir}/src/js"
+    fi
+
+    package_dir="${npm_dir}/${PACKAGE}"
+
+    if [ ! -f "${package_dir}/package.json" -o "${PACKAGE}" == "" ]; then
+        $NPM_BIN install "$@"
+        exit $?
+    fi
+
+    if [ "${PACKAGE%/*}" != "${PACKAGE}" ]; then
+        mkdir -p "node_modules/${PACKAGE%/*}"
+        ln -s "${package_dir}" "node_modules/${PACKAGE}"
+    else
+        mkdir -p node_modules
+        ln -s "${package_dir}" node_modules/
+    fi
+else
+    $NPM_BIN "$ACTION" "$@"
+fi
+
