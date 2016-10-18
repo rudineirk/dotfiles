@@ -6,6 +6,9 @@ Plug 'tpope/vim-sensible'
 Plug 'Shougo/vimproc.vim'
 
 Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'vim-scripts/gitignore'
+
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'majutsushi/tagbar'
 Plug 'editorconfig/editorconfig-vim'
@@ -62,12 +65,14 @@ map <C-b> :CtrlPBuffer<CR>
 
 set wildignore+=*/tmp/*,*/node_modules/*,*.so,*.swp,*.zip,*.gz,*.xz,*.tar
 
+let loaded_netrwPlugin=1
+let NERDTreeRespectWildIgnore=1
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree())
+
 let g:acp_enableAtStartup = 0
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
-
-let NERDTreeShowHidden=1
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
