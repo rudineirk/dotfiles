@@ -1,6 +1,6 @@
 #!/bin/bash
 
-/usr/bin/pip install --user powerline-status
+/usr/bin/pip3 install --user powerline-status
 
 dir="$( builtin cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 powerline_dir=~/.config/powerline
