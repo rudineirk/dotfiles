@@ -14,6 +14,7 @@ brew 'pyenv'
 brew 'pyenv-virtualenv'
 brew 'shc'
 brew 'tidy-html5'
+brew 'ctags'
 
 brew 'hub'
 brew 'git-lfs'
