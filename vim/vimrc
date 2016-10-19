@@ -21,7 +21,7 @@ Plug 'ervandew/supertab'
 Plug 'easymotion/vim-easymotion'
 Plug 'haya14busa/incsearch.vim'
 
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --gocode-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --gocode-completer --tern-completer' }
 Plug 'scrooloose/syntastic'
 Plug 'Chiel92/vim-autoformat'
 Plug 'tpope/vim-dispatch'
@@ -29,8 +29,12 @@ Plug 'tmhedberg/SimpylFold'
 
 Plug 'mattn/emmet-vim'
 Plug 'helino/vim-json'
+Plug 'jelera/vim-javascript-syntax'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'ternjs/tern_for_vim'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'skammer/vim-css-color'
 Plug 'alvan/vim-closetag'
 
 Plug 'fisadev/vim-isort'
