@@ -52,6 +52,7 @@ path=(
   $HOME/bin
   $HOME/.local/bin
   /usr/local/{bin,sbin}
+  /opt/wine-staging/bin
   $path
   $HOME/.linuxbrew/sbin
   $HOME/.linuxbrew/bin

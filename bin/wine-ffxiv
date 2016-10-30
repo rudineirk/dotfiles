@@ -1,0 +1,8 @@
+#!/bin/bash
+
+WINEPREFIX="$HOME/.wine_prefix/final_fantasy_xiv"
+WINEARCH=win32
+EXECUTABLE="$HOME/.wine_prefix/final_fantasy_xiv/drive_c/Program Files/SquareEnix/FINAL FANTASY XIV - A Realm Reborn/boot/ffxivboot.exe"
+OPT="$1"
+
+wine-prefix-exec "$WINEPREFIX" "$WINEARCH" "$EXECUTABLE" "$OPT"

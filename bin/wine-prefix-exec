@@ -1,0 +1,26 @@
+#!/bin/bash
+
+WINEPREFIX="$1"
+WINEARCH="$2"
+EXECUTABLE="$3"
+OPT="$4"
+
+WINEDEBUG=-all
+NVIDIA=1
+
+if [ "$OPT" == "cfg" ]; then
+    WINEPREFIX="$WINEPREFIX" WINEARCH="$WINEARCH" winecfg
+    exit $?
+elif [ "$OPT" == "debug" ]; then
+    WINEDEBUG=""
+elif [ "$OPT" == "debug-all" ]; then
+    WINEDEBUG=+all
+elif [ "$OPT" == "nonvidia" ]; then
+    NVIDIA=0
+fi
+
+if [ $NVIDIA -eq 1 ]; then
+    WINEPREFIX="$WINEPREFIX" WINEARCH="$WINEARCH" primusrun wine "$EXECUTABLE"
+else
+    WINEPREFIX="$WINEPREFIX" WINEARCH="$WINEARCH" wine "$EXECUTABLE"
+fi
