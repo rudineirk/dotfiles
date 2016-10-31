@@ -5,22 +5,21 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'Shougo/vimproc.vim'
 
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'vim-scripts/gitignore'
-
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'majutsushi/tagbar'
-Plug 'editorconfig/editorconfig-vim'
+Plug 'scrooloose/nerdtree'
+
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+
+Plug 'ervandew/supertab'
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
-Plug 'ervandew/supertab'
 Plug 'easymotion/vim-easymotion'
 Plug 'haya14busa/incsearch.vim'
 
+Plug 'editorconfig/editorconfig-vim'
+Plug 'majutsushi/tagbar'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --gocode-completer --tern-completer' }
 Plug 'scrooloose/syntastic'
 Plug 'Chiel92/vim-autoformat'
@@ -32,7 +31,6 @@ Plug 'helino/vim-json'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-Plug 'ternjs/tern_for_vim'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'skammer/vim-css-color'
 Plug 'alvan/vim-closetag'
@@ -97,7 +95,7 @@ nmap <Leader>L <Plug>(easymotion-overwin-line)
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
 
-set wildignore+=*/tmp/*,*/node_modules/*,*.so,*.swp,*.zip,*.gz,*.xz,*.tar
+set wildignore+=*/tmp/*,*/node_modules/*,*.so,*.swp,*.zip,*.gz,*.xz,*.tar,*.swp
 
 let loaded_netrwPlugin=1
 let NERDTreeRespectWildIgnore=1
@@ -137,6 +135,7 @@ let g:syntastic_python_pylint_args = '--rcfile=.pylintrc'
 
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
+autocmd FileType html let b:autoformat_autoindent=0
 
 autocmd bufwritepost *.py silent !isort %
 set autoread
@@ -144,6 +143,8 @@ set autoread
 au BufWrite * :Autoformat
 let g:formatdef_yapf = "'yapf'"
 let g:formatters_python = ['yapf']
+let g:formatdef_jsbeautify = "'js-beautify --config .jsbeautifyrc'"
+let g:formatters_js = ['jsbeautify']
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
 let g:autoformat_remove_trailing_spaces = 0
