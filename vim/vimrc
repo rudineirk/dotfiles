@@ -63,6 +63,7 @@ endif
 
 set background=dark
 colorscheme hybrid
+let g:Powerline_symbols = 'fancy'
 
 map <C-w>e :split<CR>
 map <C-w>q :vsplit<CR>
