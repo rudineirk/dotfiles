@@ -1,7 +1,5 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
-
-from __future__ import unicode_literals, print_function
 
 from subprocess import Popen, PIPE
 from os import path, environ
@@ -50,7 +48,8 @@ except IOError:
 
 proc = Popen(['git', 'rev-parse', '--show-toplevel'], stdout=PIPE, stderr=PIPE)
 proc.wait()
-git_dir = proc.stdout.read().strip()
+git_dir = proc.stdout.read()
+git_dir = git_dir.decode('utf8').strip()
 
 if not path.isdir(git_dir) or proc.returncode != 0:
     print('Not a git repository')
@@ -196,4 +195,4 @@ changelog_message.insert(
     ),
 )
 
-print('\n'.join(changelog_message).encode('utf-8'))
+print('\n'.join(changelog_message))
