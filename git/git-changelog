@@ -57,11 +57,28 @@ if not path.isdir(git_dir) or proc.returncode != 0:
     exit(1)
 
 
+def parse_version(tag):
+    version = tag.split('/')[-1]
+    version = version[1:]
+    if not version:
+        return [-1, -1, -1]
+
+    version = version.split('.')
+    if len(version) < 2:
+        return [-1, -1, -1]
+
+    try:
+        version = [int(x) for x in version]
+    except ValueError:
+        return [-1, -1, -1]
+
+    return version
+
 repo = Repository(path.join(git_dir, '.git'))
 last_tag = sorted([
     x for x in repo.listall_references()
     if x.startswith('refs/tags')
-])[-1]
+], key=parse_version)[-1]
 
 tag_ref = repo.lookup_reference(last_tag)
 tag_commit_id = tag_ref.peel().id
