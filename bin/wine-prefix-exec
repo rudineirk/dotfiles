@@ -11,6 +11,9 @@ NVIDIA=1
 if [ "$OPT" == "cfg" ]; then
     WINEPREFIX="$WINEPREFIX" WINEARCH="$WINEARCH" winecfg
     exit $?
+elif [ "$OPT" == "tricks" ]; then
+    WINEPREFIX="$WINEPREFIX" WINEARCH="$WINEARCH" winetricks
+    exit $?
 elif [ "$OPT" == "debug" ]; then
     WINEDEBUG=""
 elif [ "$OPT" == "debug-all" ]; then
