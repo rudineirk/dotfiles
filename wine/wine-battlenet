@@ -1,22 +1,8 @@
 #!/bin/bash
 
-export WINEDEBUG=-all
-export WINEPREFIX=$HOME/.wine_prefix/battle.net
-export WINEARCH=win32
-CMD="$WINEPREFIX/drive_c/Program Files/Battle.net/Battle.net.exe"
+WINEPREFIX="$HOME/.wine_prefix/battle.net"
+WINEARCH=win32
+EXECUTABLE="$HOME/.wine_prefix/battle.net/drive_c/Program Files/Battle.net/Battle.net Launcher.exe"
+OPT="$1"
 
-
-case "$1" in
-    no-nvidia)
-        wine $CMD
-        ;;
-    winecfg)
-        winecfg
-        ;;
-    debug)
-        WINEDEBUG='' wine "$CMD"
-        ;;
-    *)
-        primusrun wine "$CMD"
-        ;;
-esac
+wine-prefix-exec "$WINEPREFIX" "$WINEARCH" "$EXECUTABLE" "$OPT"
