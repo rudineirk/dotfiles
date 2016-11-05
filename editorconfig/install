@@ -3,5 +3,5 @@
 dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 editorconfig_path=~/.editorconfig
 
-[ -e "$editorconfig_path" ] && unlink "$editorconfig_path"
+[ -L "$editorconfig_path" -o -e "$editorconfig_path" ] && unlink "$editorconfig_path"
 ln -s "$dir/config" "$editorconfig_path"

@@ -5,6 +5,6 @@ dir="$( builtin cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 for script in "$dir"/*; do
     [[ "${script##*/}" == "install" ]] && continue
     mkdir -p ~/bin
-    [[ -e ~/bin/"${script##*/}" ]] && unlink ~/bin/"${script##*/}"
+    [[ -L ~/bin/"${script##*/}" || -e ~/bin/"${script##*/}" ]] && unlink ~/bin/"${script##*/}"
     ln -s "$script" ~/bin/
 done

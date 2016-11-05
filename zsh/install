@@ -8,6 +8,6 @@ fi
 
 for zsh_config in "$dir"/*; do
     [[ "${zsh_config##*/}" == "install" ]] && continue
-    [[ -e ~/."${zsh_config##*/}" ]] && unlink ~/."${zsh_config##*/}"
+    [[ -e ~/."${zsh_config##*/}" || -L ~/."${zsh_config##*/}" ]] && unlink ~/."${zsh_config##*/}"
     ln -s "$zsh_config" ~/."${zsh_config##*/}"
 done

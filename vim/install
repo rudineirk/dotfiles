@@ -4,11 +4,11 @@ dir="$( builtin cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 vimrc=~/.vimrc
 nvim_init=~/.config/nvim/init.vim
 
-[[ -e "$vimrc" ]] && unlink "$vimrc"
+[[ -e "$vimrc" || -L "$vimrc" ]] && unlink "$vimrc"
 ln -s "$dir/vimrc" "$vimrc"
 
 mkdir -p ~/.config/nvim
-[[ -e "$nvim_init" ]] && unlink "$nvim_init"
+[[ -e "$nvim_init" || -L "$nvim_init" ]] && unlink "$nvim_init"
 ln -s "$dir/vimrc" "$nvim_init"
 
 if [ ! -e ~/.vim-plug ]; then

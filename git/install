@@ -4,7 +4,7 @@ dir="$( builtin cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 gitconfig_lib_path=~/.gitconfig.lib
 gitignore_path=~/.gitignore
 
-[ -e "$gitconfig_lib_path" ] && unlink "$gitconfig_lib_path"
+[ -e "$gitconfig_lib_path" -o -L "$gitconfig_lib_path" ] && unlink "$gitconfig_lib_path"
 ln -s "$dir/gitconfig.lib" "$gitconfig_lib_path"
 
 if [ -e ~/.gitconfig ]; then
@@ -18,6 +18,6 @@ fi
 for script in "$dir"/git-*; do
     [[ "${script##*/}" == "install"  ]] && continue
     mkdir -p ~/bin
-    [[ -e ~/bin/"${script##*/}"  ]] && unlink ~/bin/"${script##*/}"
+    [[ -e ~/bin/"${script##*/}" || -L ~/bin/"${script##*/}" ]] && unlink ~/bin/"${script##*/}"
     ln -s "$script" ~/bin/
 done
