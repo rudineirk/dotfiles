@@ -1,29 +1,41 @@
 #!/bin/bash
 
 WINEPREFIX="$1"
-WINEARCH="$2"
-EXECUTABLE="$3"
-OPT="$4"
+shift
+WINEARCH="$1"
+shift
+EXECUTABLE="$1"
+shift
 
 WINEDEBUG=-all
 NVIDIA=1
 
-if [ "$OPT" == "cfg" ]; then
-    WINEPREFIX="$WINEPREFIX" WINEARCH="$WINEARCH" winecfg
-    exit $?
-elif [ "$OPT" == "tricks" ]; then
-    WINEPREFIX="$WINEPREFIX" WINEARCH="$WINEARCH" winetricks
-    exit $?
-elif [ "$OPT" == "debug" ]; then
-    WINEDEBUG=""
-elif [ "$OPT" == "debug-all" ]; then
-    WINEDEBUG=+all
-elif [ "$OPT" == "nonvidia" ]; then
-    NVIDIA=0
-fi
+while [ "$1" != "" ]; do
+    OPT=$1
+    case "$1" in
+    cfg)
+        WINEPREFIX="$WINEPREFIX" WINEARCH="$WINEARCH" winecfg
+        exit $?
+        ;;
+    tricks)
+        WINEPREFIX="$WINEPREFIX" WINEARCH="$WINEARCH" winetricks
+        exit $?
+        ;;
+    debug)
+        WINEDEBUG=""
+        ;;
+    debug-all)
+        WINEDEBUG=+all
+        ;;
+    nonvidia)
+        NVIDIA=0
+        ;;
+    esac
+    shift
+done
 
 if [ $NVIDIA -eq 1 ]; then
-    WINEPREFIX="$WINEPREFIX" WINEARCH="$WINEARCH" primusrun wine "$EXECUTABLE"
+    WINEDEBUG="$WINEDEBUG" WINEPREFIX="$WINEPREFIX" WINEARCH="$WINEARCH" primusrun wine "$EXECUTABLE"
 else
-    WINEPREFIX="$WINEPREFIX" WINEARCH="$WINEARCH" wine "$EXECUTABLE"
+    WINEDEBUG="$WINEDEBUG" WINEPREFIX="$WINEPREFIX" WINEARCH="$WINEARCH" wine "$EXECUTABLE"
 fi
