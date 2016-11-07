@@ -10,6 +10,7 @@ shift
 WINEDEBUG=-all
 NVIDIA=1
 
+COMMAND=("$EXECUTABLE")
 while [ "$1" != "" ]; do
     OPT=$1
     case "$1" in
@@ -30,12 +31,18 @@ while [ "$1" != "" ]; do
     nonvidia)
         NVIDIA=0
         ;;
+    nodefault)
+        COMMAND=()
+        ;;
+    *)
+        COMMAND+=($1)
+        ;;
     esac
     shift
 done
 
 if [ $NVIDIA -eq 1 ]; then
-    WINEDEBUG="$WINEDEBUG" WINEPREFIX="$WINEPREFIX" WINEARCH="$WINEARCH" primusrun wine "$EXECUTABLE"
+    WINEDEBUG="$WINEDEBUG" WINEPREFIX="$WINEPREFIX" WINEARCH="$WINEARCH" primusrun wine "${COMMAND[@]}"
 else
-    WINEDEBUG="$WINEDEBUG" WINEPREFIX="$WINEPREFIX" WINEARCH="$WINEARCH" wine "$EXECUTABLE"
+    WINEDEBUG="$WINEDEBUG" WINEPREFIX="$WINEPREFIX" WINEARCH="$WINEARCH" wine "${COMMAND[@]}"
 fi
