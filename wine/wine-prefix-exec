@@ -12,7 +12,6 @@ NVIDIA=1
 
 COMMAND=("$EXECUTABLE")
 while [ "$1" != "" ]; do
-    OPT=$1
     case "$1" in
     cfg)
         WINEPREFIX="$WINEPREFIX" WINEARCH="$WINEARCH" winecfg
@@ -41,8 +40,10 @@ while [ "$1" != "" ]; do
     shift
 done
 
+pushd "$(dirname "${COMMAND[0]}")" > /dev/null
 if [ $NVIDIA -eq 1 ]; then
     WINEDEBUG="$WINEDEBUG" WINEPREFIX="$WINEPREFIX" WINEARCH="$WINEARCH" primusrun wine "${COMMAND[@]}"
 else
     WINEDEBUG="$WINEDEBUG" WINEPREFIX="$WINEPREFIX" WINEARCH="$WINEARCH" wine "${COMMAND[@]}"
 fi
+popd > /dev/null
