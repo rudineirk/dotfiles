@@ -2,14 +2,18 @@
 
 dir="$( builtin cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 vimrc=~/.vimrc
-nvim_init=~/.config/nvim/init.vim
+nvim_dir=~/.config/nvim
+nvim_configs=(
+    init.vimrc
+    plugins.vimrc
+    general.vimrc
+    keys.vimrc
+    languages.vimrc
+)
 
+# vim
 [[ -e "$vimrc" || -L "$vimrc" ]] && unlink "$vimrc"
 ln -s "$dir/vimrc" "$vimrc"
-
-mkdir -p ~/.config/nvim
-[[ -e "$nvim_init" || -L "$nvim_init" ]] && unlink "$nvim_init"
-ln -s "$dir/vimrc" "$nvim_init"
 
 if [ ! -e ~/.vim-plug ]; then
     git clone https://github.com/junegunn/vim-plug.git ~/.vim-plug
@@ -24,7 +28,25 @@ if [ ! -e ~/.vim/autoload/plug.vim ]; then
     ln -s ~/.vim-plug/plug.vim ~/.vim/autoload/plug.vim
 fi
 
-if [ ! -e ~/.config/nvim/autoload/plug.vim ]; then
-    mkdir -p ~/.config/nvim/autoload
-    ln -s ~/.vim-plug/plug.vim ~/.config/nvim/autoload/plug.vim
+# neovim
+mkdir -p ~/.config/nvim/config
+
+[[ -e "${nvim_dir}/init.vim" || -L "${nvim_dir}/init.vim" ]] && unlink "${nvim_dir}/init.vim"
+ln -s "$dir/init.vim" "${nvim_dir}/init.vim"
+
+for config in "${nvim_configs[@]}"; do
+    if [[ -e "${nvim_dir}/config/${config}" || -L "${nvim_dir}/config/${config}" ]]; then
+        unlink "${nvim_dir}/config/${config}"
+    fi
+    ln -s "$dir/${config}" "${nvim_dir}/config/${config}"
+done
+
+dein_dir="$HOME/.config/nvim/dein_plugins/repos/github.com/Shougo"
+mkdir -p "${dein_dir}"
+if [ ! -e "${dein_dir}/dein.vim" ]; then
+    git clone https://github.com/Shougo/dein.vim.git "${dein_dir}/dein.vim"
+else
+    pushd "${dein_dir}/dein.vim" > /dev/null
+    git pull > /dev/null
+    popd > /dev/null
 fi

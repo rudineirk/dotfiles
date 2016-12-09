@@ -4,6 +4,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-sensible'
 Plug 'Shougo/vimproc.vim'
+Plug 'joshdick/onedark.vim'
 
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
@@ -40,8 +41,6 @@ Plug 'davidhalter/jedi-vim'
 
 Plug 'fatih/vim-go'
 
-Plug 'w0ng/vim-hybrid'
-
 call plug#end()
 
 syntax on
@@ -62,7 +61,7 @@ if has('gui_running')
 endif
 
 set background=dark
-colorscheme hybrid
+colorscheme onedark
 let g:Powerline_symbols = 'fancy'
 
 map <C-w>e :split<CR>
