@@ -6,8 +6,10 @@ map <C-d>c :tabnew<CR>
 
 map <F3> :NERDTreeToggle<CR>
 map <F8> :TagbarToggle<CR>
-map <F9> :lopen<CR>
 map <C-_> :Commentary<CR>
+
+let g:lt_location_list_toggle_map = '<F5>'
+let g:lt_quickfix_list_toggle_map = '<F6>'
 
 map <C-b> :Denite buffer<CR>
 map <C-p> :Denite file_rec<CR>

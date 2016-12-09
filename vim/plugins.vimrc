@@ -13,6 +13,7 @@ call dein#add('airblade/vim-gitgutter')
 
 call dein#add('scrooloose/nerdtree')
 call dein#add('Shougo/denite.nvim')
+call dein#add('Valloric/ListToggle')
 
 call dein#add('Raimondi/delimitMate')
 call dein#add('tpope/vim-commentary')
