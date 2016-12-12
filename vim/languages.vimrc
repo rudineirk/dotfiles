@@ -26,6 +26,8 @@ let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_json_enabled_makers = ['jsonlint']
 let g:neomake_yaml_enabled_makers = ['yamllint']
 
+let b:formatters_html = []
+
 let g:formatters_css = ['jsbeautify']
 let g:neomake_css_enabled_makers = ['stylelint']
 

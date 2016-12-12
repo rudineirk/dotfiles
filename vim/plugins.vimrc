@@ -34,7 +34,6 @@ call dein#add('carlitux/deoplete-ternjs')
 call dein#add('zchee/deoplete-go')
 
 call dein#add('mattn/emmet-vim')
-call dein#add('skammer/vim-css-color')
 call dein#add('alvan/vim-closetag')
 
 call dein#add('fatih/vim-go')
