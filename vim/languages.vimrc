@@ -6,9 +6,17 @@ let g:javascript_plugin_jsdoc = 1
 
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
-autocmd FileType html let b:autoformat_autoindent=0
 
-au BufWrite * :Autoformat
+fun! DoAutoFormat()
+  if exists('b:noAutoFormat')
+    return
+  endif
+  Autoformat
+endfun
+
+autocmd BufWrite * call DoAutoFormat()
+autocmd FileType html let b:noAutoFormat=1
+
 autocmd! BufWritePost * Neomake
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
@@ -35,7 +43,8 @@ let g:formatters_markdown = ['remark_markdown']
 let g:neomake_json_enabled_makers = ['jsonlint']
 let g:neomake_yaml_enabled_makers = ['yamllint']
 
-let g:formatters_go = ['gofmt']
+let g:formatdef_goimports = "'goimports'"
+let g:formatters_go = ['goimports']
 let g:neomake_go_makers = ['go', 'golint', 'go vet']
 
 let g:neomake_sh_makers = ['shellcheck']
