@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# reset environment variables that could interfere with normal usage
+export GREP_OPTIONS=
+# put all utility functions here
+
+git fetch --all -p
+git branch -vv | \
+    grep ": gone]" | \
+    awk "{ print $1 }" | \
+    xargs -n 1 git branch -D
