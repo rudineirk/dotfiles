@@ -5,6 +5,7 @@ call dein#begin('~/.config/nvim/dein_plugins')
 call dein#add('Shougo/dein.vim')
 call dein#add('tpope/vim-sensible')
 call dein#add('sheerun/vim-polyglot')
+call dein#add('posva/vim-vue')
 call dein#add('joshdick/onedark.vim')
 call dein#add('vim-airline/vim-airline')
 
