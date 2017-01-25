@@ -1,30 +1,27 @@
 #!/bin/bash
 
-PULL_REQUEST_ID="$1"
+BRANCH_NAME="$1"
 
 set -e
 
 function usage() {
     cat <<EOF
 Usage:
-  git pr-squash [merge request id]
+  git branch-squash [branch name]
 
 ex:
-  git pr-squash 1024
+  git branch-squash shiny-feature
 EOF
 }
 
-if [ "$PULL_REQUEST_ID" == "" ]; then
+if [ "$BRANCH_NAME" == "" ]; then
     usage
     exit 1
-elif [ "$PULL_REQUEST_ID" == "-h" -o "$PULL_REQUEST_ID" == "--help" ]; then
+elif [ "$BRANCH_NAME" == "-h" -o "$BRANCH_NAME" == "--help" ]; then
     usage
     exit 0
 fi
 
-BRANCH_NAME="pr-${PULL_REQUEST_ID}"
-
-git fetch origin "pull/${PULL_REQUEST_ID}/head:${BRANCH_NAME}"
 author=$(git --no-pager show -s --format='%an <%ae>' "${BRANCH_NAME}")
 git merge --squash "${BRANCH_NAME}"
 git commit
