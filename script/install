@@ -22,7 +22,7 @@ CATEGORIES=(
     powerline
     tmux
     zsh
-    vim
+    nvim
     atom
 )
 

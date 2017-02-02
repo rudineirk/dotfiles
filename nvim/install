@@ -1,7 +1,6 @@
 #!/bin/bash
 
 dir="$( builtin cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-vimrc=~/.vimrc
 nvim_dir=~/.config/nvim
 nvim_configs=(
     init.vimrc
@@ -11,24 +10,6 @@ nvim_configs=(
     languages.vimrc
 )
 
-# vim
-[[ -e "$vimrc" || -L "$vimrc" ]] && unlink "$vimrc"
-ln -s "$dir/vimrc" "$vimrc"
-
-if [ ! -e ~/.vim-plug ]; then
-    git clone https://github.com/junegunn/vim-plug.git ~/.vim-plug
-else
-    pushd ~/.vim-plug > /dev/null
-    git pull > /dev/null
-    popd > /dev/null
-fi
-
-if [ ! -e ~/.vim/autoload/plug.vim ]; then
-    mkdir -p ~/.vim/autoload
-    ln -s ~/.vim-plug/plug.vim ~/.vim/autoload/plug.vim
-fi
-
-# neovim
 mkdir -p ~/.config/nvim/config
 
 [[ -e "${nvim_dir}/init.vim" || -L "${nvim_dir}/init.vim" ]] && unlink "${nvim_dir}/init.vim"

@@ -22,10 +22,10 @@ let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
 let g:autoformat_remove_trailing_spaces = 0
 
-let g:formatdef_yapf = "'yapf'"
+let g:formatdef_autopep8 = "'autopep8'"
 let g:formatdef_isort = "'isort -sp .'"
-let g:formatters_python = ['yapf', 'isort']
-let g:neomake_python_makers = ['python', 'pylint', 'mypy']
+let g:formatters_python = ['autopep8', 'isort']
+let g:neomake_python_makers = ['python', 'flake8']
 let g:neomake_rst_makers = ['sphinx', 'rstcheck']
 
 let g:formatdef_jsbeautify = "'js-beautify --config .jsbeautifyrc'"
