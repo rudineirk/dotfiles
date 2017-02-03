@@ -25,8 +25,8 @@ let g:autoformat_remove_trailing_spaces = 0
 let g:formatdef_autopep8 = "'autopep8'"
 let g:formatdef_isort = "'isort -sp .'"
 let g:formatters_python = ['autopep8', 'isort']
-let g:neomake_python_makers = ['python', 'flake8']
-let g:neomake_rst_makers = ['sphinx', 'rstcheck']
+let g:neomake_python_enabled_makers = ['python', 'flake8']
+let g:neomake_rst_enabled_makers = ['sphinx', 'rstcheck']
 
 let g:formatdef_jsbeautify = "'js-beautify --config .jsbeautifyrc'"
 let g:formatters_js = ['jsbeautify']
@@ -45,8 +45,8 @@ let g:neomake_yaml_enabled_makers = ['yamllint']
 
 let g:formatdef_goimports = "'goimports'"
 let g:formatters_go = ['goimports']
-let g:neomake_go_makers = ['go', 'golint', 'go vet']
+let g:neomake_go_enabled_makers = ['go', 'golint', 'go vet']
 
-let g:neomake_sh_makers = ['shellcheck']
+let g:neomake_sh_enabled_makers = ['shellcheck']
 
-let g:neomake_spec_makers = ['rpmlint']
+let g:neomake_spec_enabled_makers = ['rpmlint']
