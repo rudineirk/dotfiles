@@ -11,10 +11,10 @@ if has('gui_running')
 endif
 
 set background=dark
-colorscheme onedark
+colorscheme molokai
 
 let g:airline_powerline_fonts = 1
-let g:airline_theme='onedark'
+let g:airline_theme='molokai'
 
 let NERDTreeRespectWildIgnore=1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree())
