@@ -26,7 +26,7 @@ call dein#add('majutsushi/tagbar')
 call dein#add('tmhedberg/SimpylFold')
 
 call dein#add('editorconfig/editorconfig-vim')
-call dein#add('Chiel92/vim-autoformat')
+call dein#add('sbdchd/neoformat')
 call dein#add('neomake/neomake')
 call dein#add('Shougo/neosnippet')
 call dein#add('Shougo/neosnippet-snippets')
