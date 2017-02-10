@@ -11,16 +11,16 @@ if has('gui_running')
 endif
 
 set background=dark
-colorscheme molokai
+colorscheme dracula
 
 let g:airline_powerline_fonts = 1
-let g:airline_theme='molokai'
+let g:airline_theme='dracula'
 
 let NERDTreeRespectWildIgnore=1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree())
 
 call denite#custom#var('file_rec', 'command',
-	\ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+    \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
 
 set wildignore+=*/tmp/*,*.pyc,*.pyo,*/.env/*,*/node_modules/*,*.so,*.swp,*.zip,*.gz,*.xz,*.tar,*.swp
 set foldlevelstart=99

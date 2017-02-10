@@ -8,7 +8,7 @@ call dein#add('sheerun/vim-polyglot')
 call dein#add('posva/vim-vue')
 call dein#add('vim-airline/vim-airline')
 call dein#add('vim-airline/vim-airline-themes')
-call dein#add('tomasr/molokai')
+call dein#add('dracula/vim')
 
 call dein#add('tpope/vim-fugitive')
 call dein#add('airblade/vim-gitgutter')
