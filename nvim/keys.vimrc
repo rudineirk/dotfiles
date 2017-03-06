@@ -14,6 +14,7 @@ let g:lt_quickfix_list_toggle_map = '<F6>'
 map <C-b> :Denite buffer<CR>
 map <C-p> :Denite file_rec<CR>
 map <C-g> :Denite grep<CR>
+map \ :Denite grep<CR>
 
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
@@ -33,4 +34,3 @@ nmap <Leader>L <Plug>(easymotion-overwin-line)
 " Move to word
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
-
