@@ -1,5 +1,2 @@
-pylint
-jedi
-isort
 uncommitted
 legit
