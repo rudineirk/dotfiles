@@ -7,16 +7,11 @@ let g:javascript_plugin_jsdoc = 1
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
 
-autocmd! BufWritePre * Neoformat
-autocmd! BufWritePost * Neomake
+autocmd BufWritePre * Neoformat
+autocmd BufWritePost * Neomake
 "autocmd FileType html, vue let b:noAutoFormat=1
 
-let g:neoformat_python_isort = {
-            \ 'exe': 'isort',
-            \ 'args': ['-'],
-            \ 'stdin': 1,
-            \ }
-let g:neoformat_enabled_python = ['isort', 'autopep8']
+let g:neoformat_enabled_python = ['autopep8']
 let g:neomake_python_enabled_makers = ['python', 'flake8']
 let g:neomake_rst_enabled_makers = ['sphinx', 'rstcheck']
 
