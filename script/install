@@ -12,6 +12,7 @@ CATEGORIES=(
     tmux
     zsh
     nvim
+    vscode
 )
 
 for category_dir in "${CATEGORIES[@]}"; do

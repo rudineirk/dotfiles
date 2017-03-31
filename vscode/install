@@ -1,0 +1,10 @@
+#!/bin/bash
+
+dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+which code > /dev/null 2>&1
+if [ $? -eq 0 ]; then
+    while read -r extension; do
+        code --install-extension "$extension"
+    done < <(cat "$dir/packages.txt")
+fi
