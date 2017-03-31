@@ -2,17 +2,6 @@
 
 builtin cd "$(dirname "${BASH_SOURCE[0]}")/.."
 
-if [ ! -f "$HOME/.linuxbrew/bin/brew" ]; then
-    git clone https://github.com/Linuxbrew/brew.git ~/.linuxbrew
-fi
-export PATH="$HOME/.linuxbrew/bin:$PATH"
-
-brew update && brew bundle
-outdated_pkgs=($(brew outdated))
-if [[ "${outdated_pkgs[@]}" -ne "" ]]; then
-    brew upgrade "${outdated_pkgs[@]}"
-fi
-
 CATEGORIES=(
     bin
     editorconfig
