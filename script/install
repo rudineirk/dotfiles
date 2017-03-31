@@ -12,7 +12,6 @@ CATEGORIES=(
     tmux
     zsh
     nvim
-    atom
 )
 
 for category_dir in "${CATEGORIES[@]}"; do
