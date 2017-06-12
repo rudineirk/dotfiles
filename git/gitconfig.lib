@@ -60,6 +60,7 @@ b = !legit sprout
 bn = !legit sprout
 bd = branch -d
 br = branch -m
+bco = branch-clean-old
 branch-new = !legit sprout
 branch-delete = branch -d
 branch-rename = branch -m
