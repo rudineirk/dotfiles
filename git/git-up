@@ -11,6 +11,8 @@
 #
 
 set -e
+upstream=0
+git_remotes=($(git remote))
 
 function pull_changes {
     git fetch --all --prune
@@ -24,9 +26,6 @@ function pull_changes {
     git submodule update --init --recursive
 }
 
-git_remotes=($(git remote))
-
-upstream=0
 for git_remote in "${git_remotes[@]}"; do
     if [ "$git_remote" == "upstream" ]; then
         upstream=1
