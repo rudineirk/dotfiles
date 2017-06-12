@@ -42,6 +42,7 @@ old = red
 new = green
 
 [alias]
+cl = clone --single-branch
 a = add
 c = commit
 cm = commit -m
@@ -91,7 +92,6 @@ sd = stash drop
 branches = !legit branches
 graft = !legit graft
 harvest = !legit harvest
-publish = !legit publish
 unpublish = !legit unpublish
 sprout = !legit sprout
 sync = !legit sync
