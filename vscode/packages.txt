@@ -12,7 +12,9 @@ HookyQR.beautify
 shinnn.stylelint
 octref.vetur
 ricard.PostCSS
+formulahendry.auto-close-tag
 
 donjayamanne.python
+wholroyd.jinja
 
 lukehoban.Go
