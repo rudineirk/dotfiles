@@ -2,12 +2,19 @@
 
 dir="$( builtin cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-if [[ ! -e ~/.zprezto ]]; then
-    git clone --recursive https://github.com/sorin-ionescu/prezto.git ~/.zprezto
-fi
+[[ ! -d ~/.zsh ]] && mkdir ~/.zsh
+[[ ! -d ~/.zkbd ]] && mkdir ~/.zkbd
 
-for zsh_config in "$dir"/*; do
-    [[ "${zsh_config##*/}" == "install" ]] && continue
-    [[ -e ~/."${zsh_config##*/}" || -L ~/."${zsh_config##*/}" ]] && unlink ~/."${zsh_config##*/}"
-    ln -s "$zsh_config" ~/."${zsh_config##*/}"
+for zsh_config in "$dir"/*.zsh; do
+    [[ -e ~/.zsh/"${zsh_config##*/}" || -L ~/.zsh/"${zsh_config##*/}" ]] && unlink ~/.zsh/"${zsh_config##*/}"
+    ln -s "$zsh_config" ~/.zsh/"${zsh_config##*/}"
 done
+
+[[ -e ~/.zsh/plugins || -L ~/.zsh/plugins ]] && unlink ~/.zsh/plugins
+ln -s "$dir/plugins" ~/.zsh/plugins
+
+[[ -e "$HOME/.zkbd/screen-256color-:0" || -L "$HOME/.zkbd/screen-256color-:0" ]] && unlink "$HOME/.zkbd/screen-256color-:0"
+ln -s "$dir/zkbd.screen-256color" "$HOME/.zkbd/screen-256color-:0"
+
+[[ -e "$HOME/.zkbd/xterm-256color-:0" || -L "$HOME/.zkbd/xterm-256color-:0" ]] && unlink "$HOME/.zkbd/xterm-256color-:0"
+ln -s "$dir/zkbd.xterm-256color" "$HOME/.zkbd/xterm-256color-:0"
