@@ -1,7 +1,7 @@
 #!/bin/bash
 
 WINEPREFIX="$HOME/.wine_prefix/steam"
-WINEARCH=win32
-EXECUTABLE="$HOME/.wine_prefix/steam/drive_c/Program Files/Steam/Steam.exe"
+WINEARCH=win64
+EXECUTABLE="$HOME/.wine_prefix/steam/drive_c/Program Files (x86)/Steam/Steam.exe"
 
 wine-prefix-exec "$WINEPREFIX" "$WINEARCH" "$EXECUTABLE" -no-cef-sandbox "$@"
