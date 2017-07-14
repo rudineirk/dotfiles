@@ -18,3 +18,9 @@ ln -s "$dir/zkbd.screen-256color" "$HOME/.zkbd/screen-256color-:0"
 
 [[ -e "$HOME/.zkbd/xterm-256color-:0" || -L "$HOME/.zkbd/xterm-256color-:0" ]] && unlink "$HOME/.zkbd/xterm-256color-:0"
 ln -s "$dir/zkbd.xterm-256color" "$HOME/.zkbd/xterm-256color-:0"
+
+[[ -e ~/.zshrc || -L ~/.zshrc ]] && unlink ~/.zshrc
+ln -s "$dir/zshrc" ~/.zshrc
+
+mkdir -p ~/bin
+curl -L https://github.com/getantibody/antibody/releases/download/v3.1.3/antibody_Linux_x86_64.tar.gz | tar -C ~/bin -xzf - antibody
