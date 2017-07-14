@@ -12,6 +12,7 @@ autocmd BufWritePost * Neomake
 "autocmd FileType html, vue let b:noAutoFormat=1
 let g:neoformat_run_all_formatters = 1
 
+let g:neoformat_run_all_formatters = 1
 let g:neoformat_enabled_python = ['autopep8', 'isort']
 let g:neomake_python_enabled_makers = ['python', 'flake8']
 let g:neomake_rst_enabled_makers = ['sphinx', 'rstcheck']
