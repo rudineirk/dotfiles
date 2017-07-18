@@ -17,12 +17,12 @@ let g:neoformat_enabled_python = ['autopep8', 'isort']
 let g:neomake_python_enabled_makers = ['python', 'flake8']
 let g:neomake_rst_enabled_makers = ['sphinx', 'rstcheck']
 
-let g:neoformat_javascript_jsbeautify = {
-            \ 'exe': 'js-beautify',
-            \ 'args': ['--config', '.jsbeautifyrc'],
-            \ 'stdin': 1,
-            \ }
-let g:neoformat_enabled_javascript = ['jsbeautify']
+let g:neoformat_javascript_prettier = {
+  \ 'exe': 'prettier',
+  \ 'args': ['--config', '.prettierrc'],
+  \ 'stdin': 1,
+  \ }
+let g:neoformat_enabled_javascript = ['prettier']
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_json_enabled_makers = ['jsonlint']
 let g:neomake_yaml_enabled_makers = ['yamllint']
