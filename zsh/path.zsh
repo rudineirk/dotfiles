@@ -14,6 +14,4 @@ path=(
   $HOME/.local/bin
   /usr/local/{bin,sbin}
   $path
-  $HOME/.linuxbrew/sbin
-  $HOME/.linuxbrew/bin
 )
