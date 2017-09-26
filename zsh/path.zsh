@@ -9,6 +9,7 @@ path=(
   ./node_modules/.bin
   $NPM_GLOBAL_PATH/bin
   ${RUBYGEM_PATH}/bin
+  $HOME/.luarocks/bin
   $HOME/.pyenv/bin
   $HOME/bin
   $HOME/.local/bin
