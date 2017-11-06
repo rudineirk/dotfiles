@@ -1,0 +1,5 @@
+#!/bin/bash
+
+xhost +SI:localuser:root
+sudo $1
+xhost -SI:localuser:root
