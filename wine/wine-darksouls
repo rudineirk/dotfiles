@@ -1,0 +1,7 @@
+#!/bin/bash
+
+WINEPREFIX="$HOME/.wine_prefix/darksouls"
+WINEARCH=win32
+EXECUTABLE="$HOME/.wine_prefix/darksouls/drive_c/Program Files/Steam/Steam.exe"
+
+wine-prefix-exec "$WINEPREFIX" "$WINEARCH" "$EXECUTABLE" -no-cef-sandbox "$@"
