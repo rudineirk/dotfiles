@@ -7,7 +7,7 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 if has('gui_running')
-  set guifont=Source\ Code\ Pro\ for\ Powerline\ Medium\ 11
+  set guifont=Hack\ Regular\ 10
 endif
 
 set background=dark
