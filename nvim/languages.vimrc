@@ -13,7 +13,7 @@ autocmd BufWritePost * Neomake
 let g:neoformat_run_all_formatters = 1
 
 let g:neoformat_run_all_formatters = 1
-let g:neoformat_enabled_python = ['autopep8', 'isort']
+let g:neoformat_enabled_python = ['yapf', 'isort']
 let g:neomake_python_enabled_makers = ['python', 'flake8']
 let g:neomake_rst_enabled_makers = ['sphinx', 'rstcheck']
 
