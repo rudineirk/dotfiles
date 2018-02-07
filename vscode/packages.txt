@@ -5,16 +5,19 @@ EditorConfig.EditorConfig
 PeterJausovec.vscode-docker
 
 DavidAnson.vscode-markdownlint
+bungcip.better-toml
 timonwong.shellcheck
 
-dbaeumer.vscode-eslint
-HookyQR.beautify
-shinnn.stylelint
-octref.vetur
-ricard.PostCSS
 formulahendry.auto-close-tag
+esbenp.prettier-vscode
+dbaeumer.vscode-eslint
+octref.vetur
+glen-84.sass-lint
 
-donjayamanne.python
+ms-python.python
 wholroyd.jinja
 
 lukehoban.Go
+
+keyring.Lua
+jjkim.lua-luachecker
