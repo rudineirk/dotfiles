@@ -3,12 +3,3 @@
 dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 pip install --user -r "$dir"/packages.txt
-
-[[ ! -d ~/.pyenv ]] && \
-    git clone \
-    https://github.com/pyenv/pyenv.git \
-    ~/.pyenv
-[[ ! -d ~/.pyenv/plugins/pyenv-virtualenv ]] && \
-    git clone \
-    https://github.com/pyenv/pyenv-virtualenv.git \
-    ~/.pyenv/plugins/pyenv-virtualenv
