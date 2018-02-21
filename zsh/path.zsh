@@ -7,6 +7,7 @@ typeset -gU cdpath fpath mailpath path
 path=(
   ${GOPATH}/bin
   ./node_modules/.bin
+  $YARN_GLOBAL_PATH/node_modules/.bin
   $NPM_GLOBAL_PATH/bin
   ${RUBYGEM_PATH}/bin
   $HOME/.luarocks/bin
