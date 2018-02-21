@@ -1,0 +1,26 @@
+{
+  "plugins": [
+    "remark-preset-lint-consistent",
+    "lint-maximum-line-length",
+    "lint-no-consecutive-blank-lines",
+    ["lint-unordered-list-marker-style", "*"],
+    ["lint-ordered-list-marker-style", "."],
+    "lint-final-newline",
+    "lint-list-item-bullet-indent",
+    ["lint-list-item-indent", "space"],
+    "lint-no-auto-link-without-protocol",
+    "lint-no-blockquote-without-marker",
+    "lint-no-literal-urls",
+    "lint-hard-break-spaces",
+    "lint-no-duplicate-definitions",
+    "lint-no-heading-content-indent",
+    "lint-no-inline-padding",
+    "lint-no-shortcut-reference-image",
+    "lint-no-shortcut-reference-link",
+    "lint-no-undefined-references",
+    "lint-no-unused-definitions"
+  ],
+  "settings": {
+    "commonmark": true
+  }
+}

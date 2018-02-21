@@ -8,8 +8,7 @@ CATEGORIES=(
     fonts
     git
     python
-    powerline
-    tmux
+    markdown
     zsh
     nvim
     vscode
