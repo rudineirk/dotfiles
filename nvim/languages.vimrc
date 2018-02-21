@@ -24,19 +24,11 @@ let g:neoformat_javascript_prettier = {
   \ }
 let g:neoformat_enabled_javascript = ['prettier']
 let g:neomake_javascript_enabled_makers = ['eslint']
+
 let g:neomake_json_enabled_makers = ['jsonlint']
 let g:neomake_yaml_enabled_makers = ['yamllint']
 
-let b:neoformat_enabled_html = ['html-beautify']
-
-let g:neoformat_enabled_css = ['stylefmt']
-let g:neomake_css_enabled_makers = ['stylelint']
-
-let g:neoformat_enabled_markdown = ['remark']
-let g:neomake_json_enabled_makers = ['jsonlint']
-let g:neomake_yaml_enabled_makers = ['yamllint']
-
-let g:neoformat_enabled_go = ['goimports']
+let g:neoformat_enabled_go = ['gofmt', 'goimports']
 let g:neomake_go_enabled_makers = ['go', 'golint', 'go vet']
 
 let g:neomake_sh_enabled_makers = ['shellcheck']
