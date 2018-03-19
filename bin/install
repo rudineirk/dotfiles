@@ -8,3 +8,9 @@ for script in "$dir"/*; do
     [[ -L ~/bin/"${script##*/}" || -e ~/bin/"${script##*/}" ]] && unlink ~/bin/"${script##*/}"
     ln -s "$script" ~/bin/
 done
+
+if [ ! -e ~/bin/jq ]; then
+  curl -L \
+    -o ~/bin/jq \
+    https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64
+fi
