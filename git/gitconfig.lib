@@ -1,3 +1,11 @@
+[pager]
+diff = diff-so-fancy | less --tabs=1,5 -R
+show = diff-so-fancy | less --tabs=1,5 -R
+
+[diff-so-fancy]
+markEmptyLines = false
+stripLeadingSymbols = false
+
 [apply]
 whitespace = nowarn
 

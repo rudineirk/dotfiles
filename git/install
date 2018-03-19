@@ -15,9 +15,12 @@ else
     echo -e "\n[include]\n  path = $gitconfig_lib_path" > ~/.gitconfig
 fi
 
+mkdir -p ~/bin
 for script in "$dir"/git-*; do
     [[ "${script##*/}" == "install"  ]] && continue
-    mkdir -p ~/bin
     [[ -e ~/bin/"${script##*/}" || -L ~/bin/"${script##*/}" ]] && unlink ~/bin/"${script##*/}"
     ln -s "$script" ~/bin/
 done
+
+[[ -e ~/bin/diff-so-fancy || -L ~/bin/diff-so-fancy ]] && unlink ~/bin/diff-so-fancy
+ln -s $dir/diff-so-fancy ~/bin/
