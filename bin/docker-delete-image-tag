@@ -1,0 +1,28 @@
+#!/bin/bash
+
+image="$1"
+image_splits="$(echo "$image" | awk -F '/' '{print NF-1}')"
+if [ "$image_splits" == 2 ]; then
+  repo="$(echo "$image" | cut -d/ -f1)"
+  image="$(echo "$image" | cut -d/ -f2,3)"
+else
+  repo=hub.docker.com
+fi
+tag="$(echo "$image" | cut -d: -f2)"
+image="$(echo "$image" | cut -d: -f1)"
+if [ "$tag" == "$image" ]; then
+  tag=latest
+fi
+
+echo "repo: $repo image: $image tag: $tag"
+auth_token="$(cat ~/.docker/config.json | jq -r ".auths.\"$repo\".auth")"
+
+url="https://${repo}/v2"
+headers=(
+  -H 'Accept: application/vnd.docker.distribution.manifest.v2+json'
+  -H "Authorization: Basic $auth_token"
+)
+
+image_tag_manifest="$(curl -s -X GET "${headers[@]}" "$url/$image/manifests/$tag" 2>/dev/null | jq -r '.config.digest')"
+
+curl -s -X DELETE "${headers[@]}" "$url/$image/manifests/$image_tag_manifest"
