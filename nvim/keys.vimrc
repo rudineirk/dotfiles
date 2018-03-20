@@ -11,10 +11,7 @@ map <C-_> :Commentary<CR>
 let g:lt_location_list_toggle_map = '<F5>'
 let g:lt_quickfix_list_toggle_map = '<F6>'
 
-map <C-b> :Denite buffer<CR>
-map <C-p> :Denite file_rec<CR>
-map <C-g> :Denite grep<CR>
-map \ :Denite grep<CR>
+map <C-p> :FZF<CR>
 
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)

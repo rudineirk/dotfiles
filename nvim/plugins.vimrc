@@ -1,4 +1,5 @@
 set runtimepath+=$HOME/.config/nvim/dein_plugins/repos/github.com/Shougo/dein.vim
+let fzf_path = expand('~/.fzf')
 
 call dein#begin('~/.config/nvim/dein_plugins')
 
@@ -12,7 +13,7 @@ call dein#add('joshdick/onedark.vim')
 
 " Navigation
 call dein#add('scrooloose/nerdtree')
-call dein#add('Shougo/denite.nvim')
+call dein#add('junegunn/fzf', {'path': fzf_path, 'build': './install --all'})
 call dein#add('Valloric/ListToggle')
 call dein#add('easymotion/vim-easymotion')
 call dein#add('haya14busa/incsearch.vim')
