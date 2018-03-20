@@ -8,7 +8,7 @@ call dein#add('tpope/vim-sensible')
 call dein#add('sheerun/vim-polyglot')
 call dein#add('vim-airline/vim-airline')
 call dein#add('vim-airline/vim-airline-themes')
-call dein#add('dracula/vim')
+call dein#add('joshdick/onedark.vim')
 
 " Navigation
 call dein#add('scrooloose/nerdtree')
