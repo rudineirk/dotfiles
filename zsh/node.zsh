@@ -5,3 +5,5 @@ NPM_GLOBAL_PATH=$HOME/.npm-packages
 YARN_GLOBAL_PATH=$HOME/.config/yarn/global
 export NPM_PROJECT_PATH
 export NPM_GLOBAL_PATH
+
+alias jest='nocorrect jest'
