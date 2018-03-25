@@ -28,3 +28,5 @@ if [ -e ~/.customrc.sh ]; then
 else
   touch ~/.customrc.sh
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
