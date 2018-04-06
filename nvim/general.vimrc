@@ -23,4 +23,6 @@ let $FZF_DEFAULT_COMMAND = 'fd --type f'
 set wildignore+=*/tmp/*,*.pyc,*.pyo,*/.env/*,*/node_modules/*,*.so,*.swp,*.zip,*.gz,*.xz,*.tar,*.swp
 set foldlevelstart=99
 
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
 let g:ale_set_signs = 0
