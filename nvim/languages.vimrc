@@ -32,3 +32,6 @@ let g:ale_fixers = {
   \ 'vue': ['prettier'],
   \ 'javascript': ['prettier'],
 \}
+
+autocmd Filetype sh setlocal ts=2 sw=2 expandtab
+autocmd Filetype python setlocal ts=4 sw=4 expandtab
