@@ -8,8 +8,11 @@ __ssh_confd() {
   if [ ! -e ~/.ssh/config.d/99-config ]; then
     command touch ~/.ssh/config.d/99-config
   fi
+  command touch ~/.ssh/config.tmp
+  command cat ~/.ssh/config.d/* > ~/.ssh/config.tmp
+  [ -s ~/.ssh/config.tmp ] && return
   command mv -f ~/.ssh/config ~/.ssh/config.old
-  command cat ~/.ssh/config.d/* > ~/.ssh/config
+  command mv -f ~/.ssh/config.tmp ~/.ssh/config
   command chmod 600 ~/.ssh/config
 }
 
