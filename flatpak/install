@@ -8,6 +8,8 @@ PKGS=(
   "flathub org.freedesktop.Platform.Icontheme.Adwaita"
   "flathub org.kde.KStyle.Adwaita//5.10"
   "flathub org.kde.PlatformTheme.QGnomePlatform//5.10"
+  "flathub org.libreoffice.LibreOffice"
+  "flathub org.gnome.gitg"
   "flathub org.gimp.GIMP"
   "flathub org.inkscape.Inkscape"
   "flathub org.keepassxc.KeePassXC"
