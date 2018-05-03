@@ -5,6 +5,9 @@ set -e
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 PKGS=(
+  "flathub org.freedesktop.Platform.Icontheme.Adwaita"
+  "flathub org.kde.KStyle.Adwaita//5.10"
+  "flathub org.kde.PlatformTheme.QGnomePlatform//5.10"
   "flathub org.gimp.GIMP"
   "flathub org.inkscape.Inkscape"
   "flathub org.keepassxc.KeePassXC"
