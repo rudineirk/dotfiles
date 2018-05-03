@@ -1,0 +1,22 @@
+#!/bin/bash
+
+set -e
+
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+PKGS=(
+  "flathub org.gimp.GIMP"
+  "flathub org.inkscape.Inkscape"
+  "flathub org.keepassxc.KeePassXC"
+  "flathub com.visualstudio.code"
+  "flathub com.spotify.Client"
+  "flathub com.valvesoftware.Steam"
+  "flathub org.gnome.Games"
+)
+
+for pkg in "${PKGS[@]}"; do
+  pkg=($pkg)
+  repo="${pkg[0]}"
+  pkg="${pkg[1]}"
+  flatpak install -y "$repo" "$pkg"
+done
