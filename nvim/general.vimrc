@@ -19,7 +19,6 @@ let g:tagbar_autofocus = 1
 let NERDTreeRespectWildIgnore=1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree())
 
-let $FZF_DEFAULT_COMMAND = 'fd --type f'
 set wildignore+=*/tmp/*,*.pyc,*.pyo,*/.env/*,*/node_modules/*,*.so,*.swp,*.zip,*.gz,*.xz,*.tar,*.swp
 set foldlevelstart=99
 

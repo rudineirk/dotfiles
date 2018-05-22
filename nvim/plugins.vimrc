@@ -1,5 +1,4 @@
 set runtimepath+=$HOME/.config/nvim/dein_plugins/repos/github.com/Shougo/dein.vim
-let fzf_path = expand('~/.fzf')
 
 call dein#begin('~/.config/nvim/dein_plugins')
 
@@ -21,20 +20,16 @@ call dein#add('airblade/vim-gitgutter')
 
 " Navigation
 call dein#add('scrooloose/nerdtree')
-call dein#add('junegunn/fzf', {'path': fzf_path, 'build': './install --all'})
+call dein#add('cloudhead/neovim-fuzzy')
 call dein#add('Valloric/ListToggle')
-call dein#add('easymotion/vim-easymotion')
 call dein#add('haya14busa/incsearch.vim')
 call dein#add('majutsushi/tagbar')
-call dein#add('tmhedberg/SimpylFold')
 
 " Autocomplete
 call dein#add('Shougo/deoplete.nvim')
 call dein#add('zchee/deoplete-jedi')
 call dein#add('carlitux/deoplete-ternjs')
 call dein#add('zchee/deoplete-go')
-call dein#add('Shougo/neosnippet')
-call dein#add('Shougo/neosnippet-snippets')
 
 " Linting and formatting
 call dein#add('w0rp/ale')
