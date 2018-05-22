@@ -30,6 +30,7 @@ call dein#add('Shougo/deoplete.nvim')
 call dein#add('zchee/deoplete-jedi')
 call dein#add('carlitux/deoplete-ternjs')
 call dein#add('zchee/deoplete-go')
+call dein#add('ervandew/supertab')
 
 " Linting and formatting
 call dein#add('w0rp/ale')
