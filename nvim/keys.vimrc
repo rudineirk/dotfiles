@@ -1,5 +1,10 @@
-map <C-w>e :split<CR>
-map <C-w>q :vsplit<CR>
+map <M-e> :vsplit<CR>
+map <M-q> :split<CR>
+nnoremap <M-Left> <C-W><C-H>
+nnoremap <M-Down> <C-W><C-J>
+nnoremap <M-Right> <C-W><C-L>
+nnoremap <M-Up> <C-W><C-K>
+
 map <C-d><Left> :tabprevious<CR>
 map <C-d><Right> :tabnext<CR>
 map <C-d>c :tabnew<CR>
