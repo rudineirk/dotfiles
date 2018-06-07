@@ -16,7 +16,6 @@ colorscheme onedark
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'onedark'
 
-let g:netrw_liststyle=3
 let g:tagbar_autofocus = 1
 
 set wildignore+=*/tmp/*,*.pyc,*.pyo,*/.env/*,*/node_modules/*,*.so,*.swp,*.zip,*.gz,*.xz,*.tar,*.swp
