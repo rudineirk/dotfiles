@@ -19,7 +19,7 @@ call dein#add('tpope/vim-fugitive')
 call dein#add('airblade/vim-gitgutter')
 
 " Navigation
-call dein#add('scrooloose/nerdtree')
+call dein#add('tpope/vim-vinegar')
 call dein#add('cloudhead/neovim-fuzzy')
 call dein#add('Valloric/ListToggle')
 call dein#add('haya14busa/incsearch.vim')

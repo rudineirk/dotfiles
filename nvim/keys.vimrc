@@ -4,8 +4,8 @@ map <C-d><Left> :tabprevious<CR>
 map <C-d><Right> :tabnext<CR>
 map <C-d>c :tabnew<CR>
 
-map <F3> :NERDTreeToggle<CR>
-map <F8> :TagbarToggle<CR>
+map <F3> :Lex<CR>
+map <F4> :TagbarToggle<CR>
 map <C-_> :Commentary<CR>
 nnoremap <C-p> :FuzzyOpen<CR>
 
