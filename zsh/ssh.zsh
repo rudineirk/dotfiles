@@ -10,7 +10,7 @@ __ssh_confd() {
   fi
   command touch ~/.ssh/config.tmp
   command cat ~/.ssh/config.d/* > ~/.ssh/config.tmp
-  [ -s ~/.ssh/config.tmp ] && return
+  [ ! -s ~/.ssh/config.tmp ] && return
   command mv -f ~/.ssh/config ~/.ssh/config.old
   command mv -f ~/.ssh/config.tmp ~/.ssh/config
   command chmod 600 ~/.ssh/config
