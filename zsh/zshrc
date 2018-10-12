@@ -1,4 +1,9 @@
 #!/bin/zsh
+
+if [ -e /etc/profile ]; then
+  source /etc/profile
+fi
+
 export EDITOR='vim'
 export VISUAL='vim'
 export PAGER='less'
