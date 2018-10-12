@@ -1,9 +1,45 @@
 #!/bin/bash
 
-antibody bundle TBSliver/zsh-theme-steeef
-antibody bundle zsh-users/zsh-completions
+ZSH_THEME_PLUGIN="${ZSH_THEME_PLUGIN:=TBSliver/zsh-theme-steeef}"
+ZSH_PLUGINS=(${ZSH_PLUGINS[*]})
+
+autoload -U colors && colors
+
+# load the zsh lib files
+typeset -U lib_files
+lib_files=($HOME/.zsh/lib/*.zsh)
+for file in ${lib_files[@]}; do
+  source "$file"
+done
+
+PLUGINS_DIR="$HOME/.zsh/plugins.d"
+PLUGINS_COMPILED="$PLUGINS_DIR/plugins_compiled.sh"
+PLUGINS_LIST="$PLUGINS_DIR/plugins.list"
+PLUGINS_MD5SUM="$PLUGINS_DIR/plugins.list.md5sum"
+
+mkdir -p "$PLUGINS_DIR"
+
+PLUGINS="mafredri/zsh-async\n"
+
+for plugin in "${ZSH_PLUGINS[@]}"; do
+  PLUGINS="${PLUGINS}${plugin}\n"
+done
+
+if [ "${ZSH_THEME_PLUGIN}" != "-" ]; then
+  PLUGINS="${PLUGINS}${ZSH_THEME_PLUGIN}\n"
+fi
 
 # **MUST** be the last plugins
-antibody bundle zsh-users/zsh-autosuggestions
-antibody bundle zsh-users/zsh-syntax-highlighting
-antibody bundle zsh-users/zsh-history-substring-search
+PLUGINS="${PLUGINS}zsh-users/zsh-autosuggestions\n"
+PLUGINS="${PLUGINS}zsh-users/zsh-syntax-highlighting\n"
+PLUGINS="${PLUGINS}zsh-users/zsh-history-substring-search\n"
+
+LAST_MD5SUM="$(cat "$PLUGINS_MD5SUM" 2>/dev/null)"
+CURRENT_MD5SUM="$(echo -n "$PLUGINS" | md5sum)"
+
+if [ "$LAST_MD5SUM" != "$CURRENT_MD5SUM" ]; then
+  echo -n "$PLUGINS" > "$PLUGINS_LIST"
+  md5sum "$PLUGINS_LIST" > "$PLUGINS_MD5SUM"
+  $HOME/bin/antibody bundle < "$PLUGINS_LIST" > "$PLUGINS_COMPILED"
+fi
+source "$PLUGINS_COMPILED"

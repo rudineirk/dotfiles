@@ -3,6 +3,8 @@ export EDITOR='vim'
 export VISUAL='vim'
 export PAGER='less'
 
+setopt nonomatch
+
 if [ ! -e ~/.customrc.sh ] || [ ! -s ~/.customrc.sh ]; then
   cat <<EOF > ~/.customrc.sh
 #!/bin/bash
@@ -19,9 +21,6 @@ EOF
 fi
 
 source ~/.customrc.sh
-
-# load antibody plugins
-source <(antibody init)
 source ~/.zsh/plugins
 
 # load the lang config files
