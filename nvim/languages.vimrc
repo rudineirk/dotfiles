@@ -1,6 +1,8 @@
 let g:deoplete#enable_at_startup = 1
 autocmd CompleteDone * pclose!
 
+let g:go_version_warning = 0
+
 let g:closetag_filenames = "*.html,*.template,*.jinja2"
 let g:javascript_plugin_jsdoc = 1
 
