@@ -30,7 +30,7 @@ let g:ale_linters = {
 let g:ale_fixers = {
   \ 'json': ['prettier'],
   \ 'go': ['gofmt', 'goimports'],
-  \ 'python': ['autopep8', 'isort'],
+  \ 'python': ['black', 'isort'],
   \ 'vue': ['prettier'],
   \ 'javascript': ['prettier'],
 \}
