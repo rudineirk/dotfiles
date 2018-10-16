@@ -13,7 +13,7 @@ done
 
 for zsh_lib in "$dir"/lib/*.zsh; do
     [[ -e ~/.zsh/lib/"${zsh_lib##*/}" || -L ~/.zsh/lib/"${zsh_lib##*/}" ]] && unlink ~/.zsh/lib/"${zsh_lib##*/}"
-    ln -s "$zsh_lib" ~/.zsh/"${zsh_lib##*/}"
+    ln -s "$zsh_lib" ~/.zsh/lib/"${zsh_lib##*/}"
 done
 
 [[ -e ~/.zsh/plugins || -L ~/.zsh/plugins ]] && unlink ~/.zsh/plugins
