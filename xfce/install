@@ -2,6 +2,12 @@
 
 xfconf-query \
   -c xfce4-keyboard-shortcuts \
+  -p '/commands/custom/Super<space>' \
+  -s /usr/bin/xfce4-popup-whiskermenu \
+  -n -t string
+
+xfconf-query \
+  -c xfce4-keyboard-shortcuts \
   -p /commands/custom/XF86AudioPlay \
   -s "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause" \
   -n -t string
