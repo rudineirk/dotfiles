@@ -1,0 +1,50 @@
+#!/bin/bash
+
+WINEPREFIX="$1"
+shift
+WINEARCH="$1"
+shift
+EXECUTABLE="$1"
+shift
+
+WINEDEBUG=-all
+NVIDIA=1
+
+COMMAND=("$EXECUTABLE")
+while [ "$1" != "" ]; do
+    case "$1" in
+    cfg)
+        WINEPREFIX="$WINEPREFIX" WINEARCH="$WINEARCH" winecfg
+        exit $?
+        ;;
+    tricks)
+        shift 1
+        WINEPREFIX="$WINEPREFIX" WINEARCH="$WINEARCH" winetricks $@
+        exit $?
+        ;;
+    debug)
+        WINEDEBUG=""
+        ;;
+    debug-all)
+        WINEDEBUG=+all
+        ;;
+    nonvidia)
+        NVIDIA=0
+        ;;
+    nodefault)
+        COMMAND=()
+        ;;
+    *)
+        COMMAND+=($1)
+        ;;
+    esac
+    shift
+done
+
+pushd "$(dirname "${COMMAND[0]}")" > /dev/null
+if [ $NVIDIA -eq 1 ]; then
+    WINEDEBUG="$WINEDEBUG" WINEPREFIX="$WINEPREFIX" WINEARCH="$WINEARCH" primusrun wine "${COMMAND[@]}"
+else
+    WINEDEBUG="$WINEDEBUG" WINEPREFIX="$WINEPREFIX" WINEARCH="$WINEARCH" wine "${COMMAND[@]}"
+fi
+popd > /dev/null

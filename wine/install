@@ -1,0 +1,20 @@
+#!/bin/bash
+
+dir="$( builtin cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+if [ ! -d ~/.winetricks ]; then
+    git clone https://github.com/Winetricks/winetricks.git ~/.winetricks
+else
+    pushd ~/.winetricks > /dev/null
+    git pull > /dev/null
+    popd > /dev/null
+fi
+
+[[ -e ~/bin/winetricks || -L ~/bin/winetricks ]] && unlink ~/bin/winetricks
+ln -s ~/.winetricks/src/winetricks ~/bin/winetricks
+
+for script in "$dir"/wine-*; do
+    mkdir -p ~/bin
+    [[ -e ~/bin/"${script##*/}" || -L ~/bin/"${script##*/}" ]] && unlink ~/bin/"${script##*/}"
+    ln -s "$script" ~/bin/
+done
