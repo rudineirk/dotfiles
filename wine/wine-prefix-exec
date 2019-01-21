@@ -1,35 +1,102 @@
 #!/bin/bash
 
-WINEPREFIX="$1"
+DXVK_VERSION="0.93"
+
+export WINEPREFIX="$1"
 shift
-WINEARCH="$1"
+export WINEARCH="$1"
 shift
 EXECUTABLE="$1"
 shift
 
-WINEDEBUG=-all
-NVIDIA=1
+export WINEDEBUG=-all
+NVIDIA=0
+
+function configure_fonts() {
+    TMPFILE=`mktemp` || exit 1
+    MODE=2 # 0 = disabled; 2 = enabled
+    TYPE=2 # 1 = regular;  2 = subpixel
+    ORIENTATION=1 # 0 = BGR; 1 = RGB
+
+    echo "REGEDIT4
+
+[HKEY_CURRENT_USER\Control Panel\Desktop]
+\"FontSmoothing\"=\"$MODE\"
+\"FontSmoothingOrientation\"=dword:0000000$ORIENTATION
+\"FontSmoothingType\"=dword:0000000$TYPE
+\"FontSmoothingGamma\"=dword:00000578" > $TMPFILE
+
+    wine regedit $TMPFILE 2> /dev/null
+    ret=$?
+    rm -f $TMPFILE
+
+    winetricks allfonts
+    return $?
+}
+
+function fix_shared_dirs() {
+    USER_DIRS=(
+        "Desktop"
+        "My Documents"
+        "My Music"
+        "My Pictures"
+        "My Videos"
+    )
+
+    for user_dir in "${USER_DIRS[@]}"; do
+        unlink "$WINEPREFIX/drive_c/users/$USER/$user_dir"
+        mkdir -p "$WINEPREFIX/drive_c/users/$USER/$user_dir"
+        touch "$WINEPREFIX/drive_c/users/$USER/$user_dir/keep.txt"
+    done
+}
+
+if [ ! -d "$WINEPREFIX" ]; then
+    mkdir -p "$WINEPREFIX"
+    winecfg
+
+    fix_shared_dirs
+    configure_fonts
+    exit
+fi
 
 COMMAND=("$EXECUTABLE")
 while [ "$1" != "" ]; do
     case "$1" in
     cfg)
-        WINEPREFIX="$WINEPREFIX" WINEARCH="$WINEARCH" winecfg
+        winecfg
         exit $?
         ;;
     tricks)
         shift 1
-        WINEPREFIX="$WINEPREFIX" WINEARCH="$WINEARCH" winetricks $@
+        winetricks $@
         exit $?
         ;;
+    msi-install)
+        shift 1
+        wine msiexec /i $@
+        exit $?
+        ;;
+    dxvk)
+        mkdir -p /tmp/dxvk
+        cd /tmp/dxvk
+        wget "https://github.com/doitsujin/dxvk/releases/download/v$DXVK_VERSION/dxvk-$DXVK_VERSION.tar.gz"
+        tar xzvf "dxvk-$DXVK_VERSION.tar.gz"
+        cd "dxvk-$DXVK_VERSION"
+
+        winetricks --force ./setup_dxvk.verb
+
+        cd /tmp
+        rm -rf /tmp/dxvk
+        exit
+        ;;
     debug)
-        WINEDEBUG=""
+        export WINEDEBUG=""
         ;;
     debug-all)
-        WINEDEBUG=+all
+        export WINEDEBUG=+all
         ;;
-    nonvidia)
-        NVIDIA=0
+    nvidia)
+        NVIDIA=1
         ;;
     nodefault)
         COMMAND=()
@@ -43,8 +110,8 @@ done
 
 pushd "$(dirname "${COMMAND[0]}")" > /dev/null
 if [ $NVIDIA -eq 1 ]; then
-    WINEDEBUG="$WINEDEBUG" WINEPREFIX="$WINEPREFIX" WINEARCH="$WINEARCH" primusrun wine "${COMMAND[@]}"
+    primusrun wine "${COMMAND[@]}"
 else
-    WINEDEBUG="$WINEDEBUG" WINEPREFIX="$WINEPREFIX" WINEARCH="$WINEARCH" wine "${COMMAND[@]}"
+    wine "${COMMAND[@]}"
 fi
 popd > /dev/null
