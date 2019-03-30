@@ -1,4 +1,4 @@
-robertohuertasm.vscode-icons
+vscode-icons-team.vscode-icons
 anseki.vscode-color
 donjayamanne.githistory
 EditorConfig.EditorConfig
@@ -17,7 +17,7 @@ glen-84.sass-lint
 ms-python.python
 wholroyd.jinja
 
-lukehoban.Go
+ms-vscode.Go
 
 keyring.Lua
 jjkim.lua-luachecker
