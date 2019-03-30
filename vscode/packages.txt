@@ -3,10 +3,10 @@ anseki.vscode-color
 donjayamanne.githistory
 EditorConfig.EditorConfig
 PeterJausovec.vscode-docker
-
 DavidAnson.vscode-markdownlint
 bungcip.better-toml
 timonwong.shellcheck
+foxundermoon.shell-format
 
 formulahendry.auto-close-tag
 esbenp.prettier-vscode
