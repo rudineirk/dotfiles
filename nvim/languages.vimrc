@@ -9,7 +9,7 @@ let g:javascript_plugin_jsdoc = 1
 let g:ale_fix_on_save = 1
 let g:ale_linters = {
   \ 'bash': ['shellcheck'],
-  \ 'sh': ['shellcheck', 'shfmt'],
+  \ 'sh': ['shellcheck'],
   \ 'markdown': ['remark-lint'],
   \ 'rst': ['sphinx', 'rstcheck'],
   \ 'json': ['jsonlint'],
@@ -33,7 +33,6 @@ let g:ale_fixers = {
   \ 'python': ['black', 'isort'],
   \ 'vue': ['prettier'],
   \ 'javascript': ['prettier'],
-  \ 'sh': ['shfmt'],
 \}
 
 autocmd Filetype sh setlocal ts=2 sw=2 expandtab
