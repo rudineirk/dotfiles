@@ -5,6 +5,7 @@ let g:go_version_warning = 0
 
 let g:closetag_filenames = "*.html,*.template,*.jinja2"
 let g:javascript_plugin_jsdoc = 1
+let g:vue_disable_pre_processors = 1
 
 let g:ale_fix_on_save = 1
 let g:ale_linters = {
