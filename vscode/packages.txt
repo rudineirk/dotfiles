@@ -2,7 +2,7 @@ vscode-icons-team.vscode-icons
 anseki.vscode-color
 donjayamanne.githistory
 EditorConfig.EditorConfig
-PeterJausovec.vscode-docker
+ms-azuretools.vscode-docker
 DavidAnson.vscode-markdownlint
 bungcip.better-toml
 timonwong.shellcheck
