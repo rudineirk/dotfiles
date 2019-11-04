@@ -9,3 +9,5 @@ unzip Hack.zip
 mv ttf/*.ttf .
 rm -rf ttf/
 rm Hack.zip
+
+dconf write /org/gnome/desktop/interface/monospace-font-name "'Hack Regular 10'"
