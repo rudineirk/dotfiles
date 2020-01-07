@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # reset environment variables that could interfere with normal usage
 export GREP_OPTIONS=
+export LANG=en_US.UTF-8
 # put all utility functions here
 
 git fetch --all -p
