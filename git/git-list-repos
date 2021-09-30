@@ -1,0 +1,61 @@
+#!/bin/bash
+
+repos() {
+  local is_org="$1"
+  local login="${2?}"
+  shift 2
+  if [ "$is_org" -eq 1 ]; then
+    paginate hub api -t graphql -f login="$login" "$@" -f query='
+      query($login: String!, $per_page: Int = 100, $after: String) {
+        organization(login: $login) {
+          repositories(first: $per_page, after: $after) {
+            nodes {
+              nameWithOwner
+            }
+            pageInfo {
+              hasNextPage
+              endCursor
+            }
+          }
+        }
+      }
+    '
+  else
+    paginate hub api -t graphql -f login="$login" "$@" -f query='
+      query($login: String!, $per_page: Int = 100, $after: String) {
+        user(login: $login) {
+          repositories(first: $per_page, after: $after) {
+            nodes {
+              nameWithOwner
+            }
+            pageInfo {
+              hasNextPage
+              endCursor
+            }
+          }
+        }
+      }
+    '
+  fi
+}
+
+paginate() {
+  local output cursor
+  output="$("$@")"
+  cursor="$(awk '/\.hasNextPage/ { has_next=$2 } /\.endCursor/ { if (has_next=="true") print $2 }' <<<"$output")"
+  printf "%s\n" "$output"
+  [ -z "$cursor" ] || paginate "$@" -f after="$cursor"
+}
+
+IS_ORG=0
+if [ "$1" == '-o' ] || [ "$1" == "--org" ]; then
+  IS_ORG=1
+  shift 1
+fi
+
+if [ "$1" == "" ]; then
+   echo "user/org required"
+   exit 1
+fi
+
+repos "$IS_ORG" "$1" | awk '/\.nameWithOwner\t/ { print $2 }'

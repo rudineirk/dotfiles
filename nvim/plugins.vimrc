@@ -24,6 +24,7 @@ call dein#add('cloudhead/neovim-fuzzy')
 call dein#add('Valloric/ListToggle')
 call dein#add('haya14busa/incsearch.vim')
 call dein#add('majutsushi/tagbar')
+call dein#add('mhinz/vim-grepper')
 
 " Autocomplete
 call dein#add('Shougo/deoplete.nvim')

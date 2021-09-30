@@ -26,6 +26,9 @@ statusHints = false
 mnemonicprefix = true
 algorithm = patience
 
+[checkout]
+defaultRemote = origin
+
 [filter "lfs"]
 clean = git-lfs clean %f
 smudge = git-lfs smudge %f
