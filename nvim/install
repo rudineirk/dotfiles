@@ -1,7 +1,9 @@
 #!/bin/bash
 
 dir="$( builtin cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-nvim_dir=~/.config/nvim
+nvim_dir="$HOME/.config/nvim"
+lua_config_dir="$nvim_dir/lua"
+nvim_config_dir="$nvim_dir/config"
 nvim_configs=(
     init.vimrc
     plugins.vimrc
@@ -9,25 +11,37 @@ nvim_configs=(
     keys.vimrc
     languages.vimrc
 )
+lua_configs=(
+    plugins.lua
+)
 
-mkdir -p ~/.config/nvim/config
+mkdir -p "$nvim_config_dir"
 
 [[ -e "${nvim_dir}/init.vim" || -L "${nvim_dir}/init.vim" ]] && unlink "${nvim_dir}/init.vim"
 ln -s "$dir/init.vim" "${nvim_dir}/init.vim"
 
 for config in "${nvim_configs[@]}"; do
-    if [[ -e "${nvim_dir}/config/${config}" || -L "${nvim_dir}/config/${config}" ]]; then
-        unlink "${nvim_dir}/config/${config}"
+    if [[ -e "${nvim_config_dir}/${config}" || -L "${nvim_config_dir}/${config}" ]]; then
+        unlink "${nvim_config_dir}/${config}"
     fi
-    ln -s "$dir/${config}" "${nvim_dir}/config/${config}"
+    ln -s "$dir/${config}" "${nvim_config_dir}/${config}"
 done
 
-dein_dir="$HOME/.config/nvim/dein_plugins/repos/github.com/Shougo"
-mkdir -p "${dein_dir}"
-if [ ! -e "${dein_dir}/dein.vim" ]; then
-    git clone https://github.com/Shougo/dein.vim.git "${dein_dir}/dein.vim"
-else
-    pushd "${dein_dir}/dein.vim" > /dev/null
-    git pull > /dev/null
-    popd > /dev/null
+mkdir -p "$lua_config_dir"
+for config in "${lua_configs[@]}"; do
+    if [[ -e "${lua_config_dir}/$config" || -L "${lua_config_dir}/${config}" ]]; then
+        unlink "${lua_config_dir}/${config}"
+    fi
+    ln -s "$dir/${config}" "${lua_config_dir}/${config}"
+done
+
+packer_dir="$HOME/.local/share/nvim/site/pack/packer/start"
+mkdir -p "${packer_dir}"
+if [ ! -e "${packer_dir}/packer.nvim" ]; then
+    git clone --depth 1 https://github.com/wbthomason/packer.nvim \
+        "${packer_dir}/packer.nvim"
+fi
+
+if ! command -v rg > /dev/null; then
+    echo "## Please install ripgrep"
 fi

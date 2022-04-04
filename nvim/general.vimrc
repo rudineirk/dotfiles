@@ -1,20 +1,9 @@
-syntax on
-filetype on
-filetype plugin indent on
-set clipboard=unnamedplus
-set termguicolors
-
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-
-if has('gui_running')
-  set guifont=Hack\ Regular\ 10
-endif
-
-colorscheme onedark
+let g:vscode_style = "dark"
+let g:vscode_disable_nvimtree_bg = v:true
+colorscheme vscode
 
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'onedark'
+let g:airline_theme = 'deus'
 
 let g:tagbar_autofocus = 1
 
@@ -25,8 +14,9 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 let g:ale_set_signs = 0
 
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeDirArrows = 1
+
+autocmd StdinReadPre * let s:std_in=1
+autocmd InsertLeave * call gitgutter#process_buffer(bufnr(''), 0)
+autocmd TextChanged * call gitgutter#process_buffer(bufnr(''), 0)

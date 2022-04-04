@@ -1,10 +1,8 @@
 vscode-icons-team.vscode-icons
 anseki.vscode-color
-donjayamanne.githistory
 EditorConfig.EditorConfig
 ms-azuretools.vscode-docker
-DavidAnson.vscode-markdownlint
-bungcip.better-toml
+hashicorp.terraform
 timonwong.shellcheck
 foxundermoon.shell-format
 
@@ -12,11 +10,8 @@ formulahendry.auto-close-tag
 esbenp.prettier-vscode
 dbaeumer.vscode-eslint
 octref.vetur
-glen-84.sass-lint
 
 ms-python.python
-wholroyd.jinja
-
 ms-vscode.Go
 
 keyring.Lua

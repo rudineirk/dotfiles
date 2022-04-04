@@ -1,3 +1,4 @@
 #!/bin/bash
 
 dconf write /org/gnome/mutter/experimental-features/rt-scheduler 1
+gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
