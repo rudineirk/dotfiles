@@ -18,5 +18,6 @@ let g:NERDTreeMinimalUI = 1
 let g:NERDTreeDirArrows = 1
 
 autocmd StdinReadPre * let s:std_in=1
-autocmd InsertLeave * call gitgutter#process_buffer(bufnr(''), 0)
-autocmd TextChanged * call gitgutter#process_buffer(bufnr(''), 0)
+command! -nargs=0 Format :call CocActionAsync('format')
+command! -nargs=0 OR     :call CocActionAsync('runCommand', 'editor.action.organizeImport')
+

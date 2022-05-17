@@ -26,8 +26,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> rn <Plug>(coc-rename)
 
-command! -nargs=0 Format :call CocActionAsync('format')
-command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
+nmap <leader>f <Plug>(coc-format)
 
 map <C-t><Left> :tabprevious<CR>
 map <C-t><Right> :tabnext<CR>
@@ -35,7 +34,9 @@ map <C-n> :tabnew<CR>
 
 map <F3> :NERDTreeToggle<CR>
 nnoremap <silent><nowait> <F4>  :CocList diagnostics<cr>
+nnoremap <silent><nowait> <F5> <cmd>lua require('telescope.builtin').buffers()<cr>
 map <C-_> :Commentary<CR>
 
 map <C-p> <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <silent> <C-[> :CocList commands<cr>
 map <C-f> <cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>

@@ -12,7 +12,6 @@ return require('packer').startup(function()
 
   -- git
   use 'tpope/vim-fugitive'
-  use 'airblade/vim-gitgutter'
 
   -- language support
   use {'neoclide/coc.nvim', branch = 'release'}
@@ -26,12 +25,4 @@ return require('packer').startup(function()
   use 'scrooloose/nerdtree'
   use 'nvim-telescope/telescope.nvim'
   use 'Valloric/ListToggle'
-
-  -- linting and formatting
-  use {
-    'w0rp/ale',
-    ft = {'sh', 'zsh', 'bash', 'c', 'cpp', 'html', 'css', 'js', 'ts', 'go', 'python'},
-    cmd = 'ALEEnable',
-    config = 'vim.cmd[[ALEEnable]]'
-  }
 end)
