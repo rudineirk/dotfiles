@@ -1,10 +1,7 @@
 vscode-icons-team.vscode-icons
-anseki.vscode-color
 EditorConfig.EditorConfig
 ms-azuretools.vscode-docker
 hashicorp.terraform
-timonwong.shellcheck
-foxundermoon.shell-format
 
 formulahendry.auto-close-tag
 esbenp.prettier-vscode
@@ -12,7 +9,7 @@ dbaeumer.vscode-eslint
 octref.vetur
 
 ms-python.python
-ms-vscode.Go
+golang.go
 
-keyring.Lua
-jjkim.lua-luachecker
+dart-code.dart-code
+dart-code.flutter
