@@ -6,6 +6,7 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 
 PKGS=(
   "flathub com.spotify.Client"
+  "flathub com.redis.RedisInsight"
 )
 
 for pkg in "${PKGS[@]}"; do
