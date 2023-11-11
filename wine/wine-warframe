@@ -1,7 +1,0 @@
-#!/bin/bash
-
-WINEPREFIX="$HOME/.wine_prefix/warframe"
-WINEARCH=win64
-EXECUTABLE="$HOME/.wine_prefix/path_of_exile/drive_c/Program Files/Grinding Gear Games/Path of Exile/PathOfExile.exe"
-
-wine-prefix-exec "$WINEPREFIX" "$WINEARCH" "$EXECUTABLE" "$@"

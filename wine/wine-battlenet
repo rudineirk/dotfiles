@@ -1,7 +1,0 @@
-#!/bin/bash
-
-WINEPREFIX="$HOME/.wine_prefix/battle.net"
-WINEARCH=win32
-EXECUTABLE="$HOME/.wine_prefix/battle.net/drive_c/Program Files/Battle.net/Battle.net Launcher.exe"
-
-wine-prefix-exec "$WINEPREFIX" "$WINEARCH" "$EXECUTABLE" "$@"
